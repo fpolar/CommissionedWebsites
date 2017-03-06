@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Fight or Flight</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="favicon.ico" type="imgs/x-icon">
+        <link rel="stylesheet" type="text/css" href="css/home.css">
+        <link href="https://fonts.googleapis.com/css?family=Comfortaa:300,400,700|Josefin+Sans:300,300i,400,400i,700,700i" rel="stylesheet">
+    </head>
+    <body>
+        <div id="header">
+            <img src="imgs/logo.png" class="logo">
+            <!--        replace the logo with some other image maybe USC logo or other more simple logo
+                        it just doesn't look good that small up there-->
+            <div class="menu">
+                <a href="#about">About The Game</a>
+                <a href="gameplay.html">Watch Gameplay</a>
+                <!--                make gameplay a seperate page with a aslidehow and when u click on the thing in the slideshow
+                                a div apperas below with the video and you're taken to that div after wards-->
+                <a href="#support">Support Us</a>
+            </div>
+        </div>
+        <!--            big logo, 
+                    then about us/pitch/support us
+                    then a slideshow of videos(how to play, playtesting, goofs)
+                        the video you click on should either
+                            replace the slideshow div and have a div with yt video on top, fade in or drop in
+                            or 
+                            just have something that darkens whole page and puts YT video on top
+                    random card could just be a little button than when hit explodes into a div with a random cart-->
+
+
+        <div id="intro" class="section">
+            <img src="imgs/logo.png" class="logo">
+            <h1>A Party Game for Animals</h1>
+        </div>
+        <div id='about' class='section'>
+            <h1>About <b>Fight Or Flight</b></h1>
+            <div class='body'>
+                Fight or Flight is a party game where you can make your friends feel hilariously uncomfortable. 
+                It’s a combination of truth or dare and spin the bottle, but with physical dares only, ranging from mild to spicy.
+                Players must close their eyes and
+                not flinch while the dare is being performed on them, or else they're out!
+                <br>
+                <br>
+                <i>Enjoy the giddy ridiculousness and anticipation of pushing your friends to their limits</i>
+            </div>
+            <div id='cards'>
+                <img src="" id='img1'>
+                <img src="" id='img2'>
+                <img src="" id='img3'>
+            </div>
+        </div>
+
+        <div id = "support" class="section">
+            <a id="pigeon" href="https://docs.google.com/forms/d/e/1FAIpQLSfssDJ299k0kKVENrgYIpJQkLOih5v_SLOA19v04zjqfZRL-Q/viewform?c=0&w=1">
+                <img src="imgs/pigeon_flip.png"> 
+            </a>
+            <div id="buttons">
+                <a id="ks" href="link-to-kickstarter">
+                    <img src="imgs/social/ks_icon.png">
+                </a>
+                <a id="fb" href="https://www.facebook.com/fightorflightgame/">
+                    <img src="imgs/social/fb_icon.png" >
+                </a>
+                <a id="ig" href="https://www.instagram.com/fightorflightgame/?hl=en">
+                    <img src="imgs/social/insta_icon.png" >
+                </a>
+                <a id="tw" href="https://twitter.com/forfgame">
+                    <img src="imgs/social/twitter_icon.png" >
+                </a>
+            </div>
+            <div class='body'>
+                We're just a few college students who want to share our game with the world.  
+                <br>
+                Help us out by donating to our kickstarter, following us on social media,
+                and signing up for our mailing list by clicking on our pidgeon friend!
+            </div>
+
+            <div id="card_idea">
+                <div class='body'>
+                    If you have a <i>bad</i> idea for a card, share it with us here!
+                </div>
+                <div id="submit_card">
+                    <input id="email" maxlength="100">
+
+                    <button id="support_submit" onclick="submit_to_mailing()">Submit</button>
+                </div>
+            </div>
+            <!--            <div id='logo_cards'>
+                            <img src="imgs/cards_md/mild (21).jpg" id='mild'>
+                            <img src="imgs/cards_md/med (4).jpg" id='med'>
+                            <img src="imgs/cards_md/spicy (4).jpg" id='spicy'>
+                        </div>-->
+        </div>
+
+        <div id="footer">
+            <a href="https://www.facebook.com/fightorflightgame/">
+                <img src="imgs/social/fb_icon.png" class="icon">
+            </a>
+            <a href="https://www.instagram.com/fightorflightgame/?hl=en">
+                <img src="imgs/social/insta_icon.png" class="icon">
+            </a>
+            <a href="https://twitter.com/forfgame">
+                <img src="imgs/social/twitter_icon.png" class="icon">
+            </a>
+            <a href="https://twitter.com/forfgame">
+                <img src="imgs/social/k_icon.png" class="icon">
+            </a>
+            <div class="contact">
+                Contact Us:<br>
+                <a href="mailto:someone@example.com?Subject=Let's%20talk%20about%20Fight%20or%20Flight">fightotflightteam@gmail.com</a>
+            </div>
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        <script type="text/javascript" src="js/imgInit.js"></script>
+    </body>
+</html>

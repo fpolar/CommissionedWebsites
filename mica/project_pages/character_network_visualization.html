@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>MICA</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="/MICA/css/MICA.css">
+        <link rel="stylesheet" type="text/css" href="/MICA/css/projects.css">
+        <link rel="stylesheet" type="text/css" href="/MICA/css/project_pages/char_vis_demo.css">
+        <link rel="stylesheet" type="text/css" href="/MICA/slick/slick.css"/>
+        <link rel="stylesheet" type="text/css" href="/MICA/slick/slick-theme.css"/>
+        <link rel="stylesheet" type="text/css" href="/MICA/css/slick_modifications.css">
+        <link href="https://fonts.googleapis.com/css?family=Comfortaa:300,400,700|Josefin+Sans:300,300i,400,400i,700,700i|Lobster|Pacifico|Sansita:400,400i,700,900" rel="stylesheet">
+    </head>
+    <body>
+        <div id="header">
+            <img src="../imgs/SailLogo.png" class="logo">
+
+            <div id="mica">
+                <a href="../index.html">MICA</a>
+            </div>
+            <div class="menu">
+                <a href="../MICA/index.html#people">People</a>
+                <a href="../MICA/projects.html">Projects</a> 
+                <a href="http://sail.usc.edu/aigaion2/index.php/topics/single/13">Publications</a>
+            </div>
+        </div>
+
+        <div id="page_title">
+            <h1>Character Network Visualization Demo</h1>
+        </div>
+
+        <script src="/MICA/js/project_pages_js/char_vis_demo.js"></script>
+        <div id="instructions">
+            <h2>
+                Choose a movie from the list below and click submit to load its character network graph
+            </h2>
+            <select id="drop_down_menu">
+                <option value="annie_hall">Annie Hall</option>
+                <option value="30_minutes_or_less">30 Minutes Or Less</option>
+                <option value="44_inch_chest">44 Inch Chest</option>
+                <option value="48_hrs">48 Hrs</option>
+                <option value="8mm">8mm</option>
+                <option value="a_few_good_men">A Few Good Men</option>
+                <option value="adaptation">Adaptation</option>
+                <option value="agnes_of_god">Agnes Of God</option>
+                <option value="air_force_one">Air Force One</option>
+                <option value="alien_nation">Alien Nation</option>
+                <option value="aliens">Aliens</option>
+                <option value="almost_famous">Almost Famous</option>
+                <option value="amelia">Amelia</option>
+                <option value="american_beauty">American Beauty</option>
+                <option value="american_graffiti">American Graffiti</option>
+                <option value="american_history_x">American History X</option>
+                <option value="american_pie">American Pie</option>
+                <option value="american_psycho">American Psycho</option>
+                <option value="an_education">An Education</option>
+                <option value="analyze_this">Analyze This</option>
+                <option value="anastasia">Anastasia</option>
+                <option value="antitrust">Antitrust</option>
+                <option value="apocalypse_now">Apocalypse Now</option>
+                <option value="apt_pupil">Apt Pupil</option>
+                <option value="arthur">Arthur</option>
+                <option value="assassins">Assassins</option>
+                <option value="austin_powers_international_man_of_mystery">Austin Powers International Man Of Mystery</option>
+                <option value="austin_powers_the_spy_who_shagged_me">Austin Powers The Spy Who Shagged Me</option>
+                <option value="bad_teacher">Bad Teacher</option>
+                <option value="barry_lyndon">Barry Lyndon</option>
+                <option value="barton_fink">Barton Fink</option>
+                <option value="basic_instinct">Basic Instinct</option>
+                <option value="basquiat">Basquiat</option>
+                <option value="batman">Batman</option>
+                <option value="beginners">Beginners</option>
+                <option value="being_there">Being There</option>
+                <option value="beloved">Beloved</option>
+                <option value="black_swan">Black Swan</option>
+                <option value="blade">Blade</option>
+                <option value="blade_ii">Blade Ii</option>
+                <option value="blade_runner">Blade Runner</option>
+                <option value="blood_simple">Blood Simple</option>
+                <option value="blow">Blow</option>
+                <option value="blue_valentine">Blue Valentine</option>
+                <option value="blue_velvet">Blue Velvet</option>
+                <option value="body_of_evidence">Body Of Evidence</option>
+                <option value="boogie_nights">Boogie Nights</option>
+                <option value="bound">Bound</option>
+                <option value="braveheart">Braveheart</option>
+                <option value="bridesmaids">Bridesmaids</option>
+                <option value="buried">Buried</option>
+                <option value="burlesque">Burlesque</option>
+                <option value="burn_after_reading">Burn After Reading</option>
+                <option value="cars_2">Cars 2</option>
+                <option value="cast_away">Cast Away</option>
+                <option value="cedar_rapids">Cedar Rapids</option>
+                <option value="charade">Charade</option>
+                <option value="chinatown">Chinatown</option>
+                <option value="citizen_kane">Citizen Kane</option>
+                <option value="clerks">Clerks</option>
+                <option value="colombiana">Colombiana</option>
+                <option value="confessions_of_a_dangerous_mind">Confessions Of A Dangerous Mind</option>
+                <option value="copycat">Copycat</option>
+                <option value="cradle_2_the_grave">Cradle 2 The Grave</option>
+                <option value="crazy_stupid_love">Crazy Stupid Love</option>
+                <option value="dark_city">Dark City</option>
+                <option value="dead_poets_society">Dead Poets Society</option>
+                <option value="death_to_smoochy">Death To Smoochy</option>
+                <option value="defiance">Defiance</option>
+                <option value="devil_in_a_blue_dress">Devil In A Blue Dress</option>
+                <option value="do_the_right_thing">Do The Right Thing</option>
+                <option value="drag_me_to_hell">Drag Me To Hell</option>
+                <option value="dragonslayer">Dragonslayer</option>
+                <option value="drop_dead_gorgeous">Drop Dead Gorgeous</option>
+                <option value="duck_soup">Duck Soup</option>
+                <option value="elizabeth_the_golden_age">Elizabeth The Golden Age</option>
+                <option value="enemy_of_the_state">Enemy Of The State</option>
+                <option value="erin_brockovich">Erin Brockovich</option>
+                <option value="eternal_sunshine_of_the_spotless_mind">Eternal Sunshine Of The Spotless Mind</option>
+                <option value="existenz">Existenz</option>
+                <option value="fantastic_four">Fantastic Four</option>
+                <option value="fast_times_at_ridgemont_high">Fast Times At Ridgemont High</option>
+                <option value="fight_club">Fight Club</option>
+                <option value="forrest_gump">Forrest Gump</option>
+                <option value="four_rooms">Four Rooms</option>
+                <option value="fracture">Fracture</option>
+                <option value="from_dusk_till_dawn">From Dusk Till Dawn</option>
+                <option value="frozen_river">Frozen River</option>
+                <option value="gattaca">Gattaca</option>
+                <option value="get_low">Get Low</option>
+                <option value="ghost_world">Ghost World</option>
+                <option value="ginger_snaps">Ginger Snaps</option>
+                <option value="gladiator">Gladiator</option>
+                <option value="godzilla">Godzilla</option>
+                <option value="good_will_hunting">Good Will Hunting</option>
+                <option value="gothika">Gothika</option>
+                <option value="groundhog_day">Groundhog Day</option>
+                <option value="hackers">Hackers</option>
+                <option value="hall_pass">Hall Pass</option>
+                <option value="hanna">Hanna</option>
+                <option value="heat">Heat</option>
+                <option value="heathers">Heathers</option>
+                <option value="hellboy">Hellboy</option>
+                <option value="hesher">Hesher</option>
+                <option value="his_girl_friday">His Girl Friday</option>
+                <option value="hot_tub_time_machine">Hot Tub Time Machine</option>
+                <option value="human_nature">Human Nature</option>
+                <option value="i_am_number_four">I Am Number Four</option>
+                <option value="i_am_sam">I Am Sam</option>
+                <option value="i_love_you_phillip_morris">I Love You Phillip Morris</option>
+                <option value="i_still_know_what_you_did_last_summer">I Still Know What You Did Last Summer</option>
+                <option value="indiana_jones_and_the_last_crusade">Indiana Jones And The Last Crusade</option>
+                <option value="indiana_jones_and_the_temple_of_doom">Indiana Jones And The Temple Of Doom</option>
+                <option value="interview_with_the_vampire">Interview With The Vampire</option>
+                <option value="into_the_wild">Into The Wild</option>
+                <option value="intolerable_cruelty">Intolerable Cruelty</option>
+                <option value="jurassic_park_iii">Jurassic Park Iii</option>
+                <option value="law_abiding_citizen">Law Abiding Citizen</option>
+                <option value="legally_blonde">Legally Blonde</option>
+                <option value="liar_liar">Liar Liar</option>
+                <option value="little_nicky">Little Nicky</option>
+                <option value="lord_of_war">Lord Of War</option>
+                <option value="lost_highway">Lost Highway</option>
+                <option value="lost_in_space">Lost In Space</option>
+                <option value="magnolia">Magnolia</option>
+                <option value="major_league">Major League</option>
+                <option value="man_on_the_moon">Man On The Moon</option>
+                <option value="manhunter">Manhunter</option>
+                <option value="margin_call">Margin Call</option>
+                <option value="martha_marcy_may_marlene">Martha Marcy May Marlene</option>
+                <option value="men_in_black">Men In Black</option>
+                <option value="midnight_cowboy">Midnight Cowboy</option>
+                <option value="midnight_express">Midnight Express</option>
+                <option value="milk">Milk</option>
+                <option value="misery">Misery</option>
+                <option value="mission_impossible">Mission Impossible</option>
+                <option value="mission_impossible_ii">Mission Impossible Ii</option>
+                <option value="mission_to_mars">Mission To Mars</option>
+                <option value="moneyball">Moneyball</option>
+                <option value="monkeybone">Monkeybone</option>
+                <option value="moonstruck">Moonstruck</option>
+                <option value="my_girl">My Girl</option>
+                <option value="mystery_men">Mystery Men</option>
+                <option value="newsies">Newsies</option>
+                <option value="ninotchka">Ninotchka</option>
+                <option value="o_brother_where_art_thou">O Brother Where Art Thou</option>
+                <option value="out_of_sight">Out Of Sight</option>
+                <option value="pariah">Pariah</option>
+                <option value="paul">Paul</option>
+                <option value="pearl_harbor">Pearl Harbor</option>
+                <option value="peeping_tom">Peeping Tom</option>
+                <option value="philadelphia">Philadelphia</option>
+                <option value="phone_booth">Phone Booth</option>
+                <option value="pleasantville">Pleasantville</option>
+                <option value="point_break">Point Break</option>
+                <option value="psycho">Psycho</option>
+                <option value="rebel_without_a_cause">Rebel Without A Cause</option>
+                <option value="reservoir_dogs">Reservoir Dogs</option>
+                <option value="rocky">Rocky</option>
+                <option value="ronin">Ronin</option>
+                <option value="save_the_last_dance">Save The Last Dance</option>
+                <option value="saving_private_ryan">Saving Private Ryan</option>
+                <option value="scott_pilgrim_vs_the_world">Scott Pilgrim Vs The World</option>
+                <option value="sense_and_sensibility">Sense And Sensibility</option>
+                <option value="serial_mom">Serial Mom</option>
+                <option value="sex_and_the_city">Sex And The City</option>
+                <option value="shame">Shame</option>
+                <option value="signs">Signs</option>
+                <option value="snatch">Snatch</option>
+                <option value="solaris">Solaris</option>
+                <option value="source_code">Source Code</option>
+                <option value="spanglish">Spanglish</option>
+                <option value="sphere">Sphere</option>
+                <option value="star_trek_nemesis">Star Trek Nemesis</option>
+                <option value="starman">Starman</option>
+                <option value="stepmom">Stepmom</option>
+                <option value="strangers_on_a_train">Strangers On A Train</option>
+                <option value="sunset_blvd">Sunset Blvd</option>
+                <option value="sunshine_cleaning">Sunshine Cleaning</option>
+                <option value="superbad">Superbad</option>
+                <option value="sweet_smell_of_success">Sweet Smell Of Success</option>
+                <option value="swingers">Swingers</option>
+                <option value="synecdoche_new_york">Synecdoche New York</option>
+                <option value="taxi_driver">Taxi Driver</option>
+                <option value="thirteen_days">Thirteen Days</option>
+                <option value="tombstone">Tombstone</option>
+                <option value="total_recall">Total Recall</option>
+                <option value="toy_story">Toy Story</option>
+                <option value="tron">Tron</option>
+                <option value="true_lies">True Lies</option>
+                <option value="unbreakable">Unbreakable</option>
+                <option value="vanilla_sky">Vanilla Sky</option>
+                <option value="war_horse">War Horse</option>
+                <option value="warrior">Warrior</option>
+                <option value="water_for_elephants">Water For Elephants</option>
+                <option value="what_about_bob">What About Bob</option>
+                <option value="what_lies_beneath">What Lies Beneath</option>
+                <option value="who_framed_roger_rabbit">Who Framed Roger Rabbit</option>
+                <option value="wild_at_heart">Wild At Heart</option>
+                <option value="xxx">Xxx</option>
+                <option value="youth_in_revolt">Youth In Revolt</option>
+
+            </select>
+            <button onclick="load_character_plot()">Submit</button>
+        </div>
+        <div id="graph_div" style="display: none;">
+            <iframe id="graph" height="100%" scrolling="no" seamless="seamless" src="" style="border: none;" width="100%"></iframe>
+        </div>
+        <div id="placeholder">
+            <h1>Select a movie Above to see its graph.</h1>
+            <!--<img src="../imgs/placeholder.gif">-->
+        </div>
+        <div id="usage">
+            <h2>Usage</h2>
+            <h3>The graph is interactive!</h3>
+            <ul>
+                <li>Zoom in(alt+click) and rotate(shift+click) the graph to reveal interesting patterns</li>
+                <li>Each node in the graph represents a character in the movie; hover on it to reveal its name</li>
+                <li>Size of the node represents number of utterances by that character</li>
+            </ul>
+            <ul>
+                <li>Male characters are blue colored, female characters are green colored</li>
+                <li>The graph title indicates if a movie passes the <u><b>Bechdel test</b></u></li>
+                <li>Red nodes represent female characters that pass the Bechdel test</li>
+            </ul>
+        </div>
+    <div id="footer">
+
+        insert other social media and email and links here
+        <div id="twitter">
+            <a href="https://twitter.com/SAIL_USC" class="twitter-follow-button" data-size="large" data-show-count="false">Follow @SAIL_USC</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
+
+    </div>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Feb 21, 2017, 4:15:04 PM
+    Author     : theon
+*/
+
+#instructions{
+    padding-top: 5vh;
+    padding-bottom: 7.5vh;
+    width:100vw;
+}
+h2{
+    text-align: center;
+    margin-bottom: 2vh;
+    color:white;
+}
+select{
+    margin-left:38vw;
+    width:18vw;
+}
+button{
+    width:6vw;
+}
+select, button{
+    border: .5vh solid white;
+    border-radius: 1vh;
+    outline: none;
+    color: #2384c5;
+    background-color: white;
+    font-size:2vh;
+    font-family: "Josefin Sans";
+    font-weight: 700;
+}
+#graph, #placeholder{
+    height:80vh;
+    background-color: white;
+    width:100vw;
+    text-align: center;
+}
+#placeholder h1{
+    padding-top: 30vh;
+}
+#usage{
+    text-align: center;
+    color:white;
+}
+ul{
+    list-style: none;
+    float:left;
+    margin-left:6.66vw;
+    padding: 0vw 0vw 0vw 0vw;
+    width:40vw;
+}
+li{
+    margin-bottom: 2vh
+}

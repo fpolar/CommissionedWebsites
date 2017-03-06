@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>MICA Projects</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="css/MICA.css">
+        <link rel="stylesheet" type="text/css" href="css/projects.css">
+        <link rel="stylesheet" type="text/css" href="slick/slick.css"/>
+        <link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
+        <link rel="stylesheet" type="text/css" href="css/slick_modifications.css">
+        <link href="https://fonts.googleapis.com/css?family=Comfortaa:300,400,700|Josefin+Sans:300,300i,400,400i,700,700i|Lobster|Pacifico|Sansita:400,400i,700,900" rel="stylesheet">
+
+    </head>
+    <body>
+        <div id="header">
+            <img src="imgs/SailLogo.png" class="logo">
+
+            <div id="mica">
+                <a href="../MICA/index.html">MICA</a>
+            </div>
+
+            <div class="menu">
+                <a href="../MICA/index.html#people">People</a>
+                <a href="../MICA/projects.html">Projects</a> 
+                <a href="http://sail.usc.edu/aigaion2/index.php/topics/single/13">Publications</a>
+            </div>
+        </div>
+
+        <div id="page_title">
+            <h1>Current Projects</h1>
+        </div>
+
+        <div id="curr_projects" class="slideshow">
+
+            <div class="slide">
+                <img src="imgs/demo_1.gif">
+                <div class="proj_text">
+                    <div class="proj_title">Media content analysis</div>
+                    <div class="proj_desc">
+                        We are interested in multimodal analysis of media content for the purposes like emotion prediction, 
+                        success analysis and extracting interesting analytics such as gender or racial biases. Our work involves independent and joint processing of audio, 
+                        visual and text information, and developing computational models to quantify and predict emotion and other quantities related to the impact of 
+                        media to our personal and social life.
+                    </div>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imgs/demo_2.gif">
+                <div class="proj_text">
+                    <div class="proj_title">Pokémon</div>
+                    <div class="proj_desc">
+                        Pikachu are a species of Pokémon, fictional creatures that 
+                        appear in an assortment of video games, 
+                        animated television shows and movies, trading card games, and comic books
+                    </div>
+                </div>
+            </div>
+            <div class="slide">
+                <img src="imgs/demo_3.gif">
+                <div class="proj_text">
+                    <div class="proj_title">One Piece</div>
+                    <div class="proj_desc">
+                        Monkey D. "Straw Hat" Luffy is a fictional
+                        character and the main protagonist of the One Piece 
+                        manga series created by Eiichiro Oda.</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="submit">
+            <h1>Submit your media</h1>
+            <img src="imgs/drive_logo.png">
+            <div id="text">
+                <div class="textb">
+                    Leave us a google drive link to your media and describe how you would like us to analyze it below
+                </div>
+                <script >
+                    function change_clr(id) {
+                        var x = document.getElementById(id);
+                        x.style.backgroundColor = '#98cbed';
+                        setTimeout(function () {
+                        x.style.backgroundImage = 'none';
+                        }, 2000);
+                    }
+                </script>
+                <textarea id="link" onfocus="change_clr('link')"></textarea>
+                <textarea id="desc" onfocus="change_clr('desc')"></textarea>
+            </div>
+        </div>
+
+        <div id="footer">
+
+            insert other social media and email and links here
+
+            <div id="tweets">
+                <a class="twitter-timeline" href="https://twitter.com/SAIL_USC">Tweets by SAIL_USC</a> <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div>
+            <div id="twitter">
+                <a href="https://twitter.com/SAIL_USC" class="twitter-follow-button" data-size="large" data-show-count="false">Follow @SAIL_USC</a><script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+            </div>
+
+        </div>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        <script type="text/javascript" src="slick/slick.min.js"></script>
+        <script type="text/javascript" src="js/slickInit.js"></script>
+    </body>
+</html>

@@ -1,0 +1,64 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Mar 9, 2017, 10:56:26 PM
+    Author     : theon
+*/
+
+
+@media(max-width:800px){
+    body{
+        120vw;
+    }
+    #header{
+        display: none;
+    }
+    .section{
+        min-height: 0vh;
+    }
+    #intro h1{
+        margin-bottom: 10vh;
+    }
+    .body{
+        font-size: 1.5vmax;
+        line-height: 3vw;
+        margin-top: 5vh;
+    }
+    #cards{
+        margin-top: 5%;
+    }
+    #about h1{
+        float: right;
+        font-size: 150%;
+        margin-right: 13%;
+        width: 22%;
+    }
+    #support .body{
+        margin-top: 0vh;
+        width: 55%;
+        font-size: 1.9vmax;
+        padding-bottom: 5%;
+    }
+    #pigeon, #buttons{
+        width:40%;
+    }
+    #buttons, #card_idea{
+        display: none;
+    }
+    .icon{
+        width: 14%;
+        margin-left: 8.4%;
+    }
+    .contact{
+        margin-top: 4vmax;
+        font-size: 120%;
+        text-align: center;
+        line-height: 4vmax;
+    }
+    #footer{
+        height: 28%;
+    }
+}

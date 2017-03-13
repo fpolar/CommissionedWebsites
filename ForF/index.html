@@ -11,16 +11,19 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="shortcut icon" href="favicon.ico" type="imgs/x-icon">
         <link rel="stylesheet" type="text/css" href="css/home.css">
+        <link rel="stylesheet" type="text/css" href="css/mobile.css">
         <link href="https://fonts.googleapis.com/css?family=Comfortaa:300,400,700|Josefin+Sans:300,300i,400,400i,700,700i" rel="stylesheet">
     </head>
     <body>
         <div id="header">
-            <img src="imgs/logo.png" class="logo">
-            <!--        replace the logo with some other image maybe USC logo or other more simple logo
-                        it just doesn't look good that small up there-->
+            <!--        
+            <img src="imgs/logo.png" class="logo" alt="">
+                replace the logo with some other image maybe USC logo or other more simple logo
+                it just doesn't look good that small up there
+            -->
             <div class="menu">
                 <a href="#about">About The Game</a>
-                <a href="gameplay.html">Watch Gameplay</a>
+                <!--<a href="gameplay.html">Watch Gameplay</a>-->
                 <!--                make gameplay a seperate page with a aslidehow and when u click on the thing in the slideshow
                                 a div apperas below with the video and you're taken to that div after wards-->
                 <a href="#support">Support Us</a>
@@ -37,7 +40,7 @@ and open the template in the editor.
 
 
         <div id="intro" class="section">
-            <img src="imgs/logo.png" class="logo">
+            <img src="imgs/logo.png" class="logo" alt="">
             <h1>A Party Game for Animals</h1>
         </div>
         <div id='about' class='section'>
@@ -52,22 +55,22 @@ and open the template in the editor.
                 <i>Enjoy the giddy ridiculousness and anticipation of pushing your friends to their limits</i>
             </div>
             <div id='cards'>
-                <img src="" id='img1'>
-                <img src="" id='img2'>
-                <img src="" id='img3'>
+                <img src="" id='img1' alt="">
+                <img src="" id='img2' alt="">
+                <img src="" id='img3' alt="">
             </div>
         </div>
 
         <div id = "support" class="section">
             <a id="pigeon" href="https://docs.google.com/forms/d/e/1FAIpQLSfssDJ299k0kKVENrgYIpJQkLOih5v_SLOA19v04zjqfZRL-Q/viewform?c=0&w=1">
-                <img src="imgs/pigeon_flip.png"> 
+                <img src="imgs/pigeon_flip.png" alt=""> 
             </a>
             <div id="buttons">
                 <a id="ks" href="link-to-kickstarter">
-                    <img src="imgs/social/ks_icon.png">
+                    <img src="imgs/social/ks_icon.png" alt="">
                 </a>
                 <a id="fb" href="https://www.facebook.com/fightorflightgame/">
-                    <img src="imgs/social/fb_icon.png" >
+                    <img src="imgs/social/fb_icon.png" alt="">
                 </a>
                 <a id="ig" href="https://www.instagram.com/fightorflightgame/?hl=en">
                     <img src="imgs/social/insta_icon.png" >
@@ -80,24 +83,20 @@ and open the template in the editor.
                 We're just a few college students who want to share our game with the world.  
                 <br>
                 Help us out by donating to our kickstarter, following us on social media,
-                and signing up for our mailing list by clicking on our pidgeon friend!
+                and signing up for our mailing list by clicking 
+                <a id="here" href="https://docs.google.com/forms/d/e/1FAIpQLSfssDJ299k0kKVENrgYIpJQkLOih5v_SLOA19v04zjqfZRL-Q/viewform?c=0&w=1">here</a>!
             </div>
-
+            <div class="seperator"></div>
             <div id="card_idea">
                 <div class='body'>
                     If you have a <i>bad</i> idea for a card, share it with us here!
                 </div>
-                <div id="submit_card">
-                    <input id="email" maxlength="100">
+                <form id="submit_card" >
+                    <input id="card_idea" maxlength="100">
 
-                    <button id="support_submit" onclick="submit_to_mailing()">Submit</button>
-                </div>
+                    <button id="support_submit">Submit</button>
+                </form>
             </div>
-            <!--            <div id='logo_cards'>
-                            <img src="imgs/cards_md/mild (21).jpg" id='mild'>
-                            <img src="imgs/cards_md/med (4).jpg" id='med'>
-                            <img src="imgs/cards_md/spicy (4).jpg" id='spicy'>
-                        </div>-->
         </div>
 
         <div id="footer">
@@ -115,11 +114,12 @@ and open the template in the editor.
             </a>
             <div class="contact">
                 Contact Us:<br>
-                <a href="mailto:someone@example.com?Subject=Let's%20talk%20about%20Fight%20or%20Flight">fightotflightteam@gmail.com</a>
+                <a href="mailto:fightorflightteam@gmail.com?Subject=Let's%20talk%20about%20Fight%20or%20Flight">fightorflightteam@gmail.com</a>
             </div>
         </div>
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>-->
+        <script src="js/jquery-3.1.1.min.js"></script>
         <script type="text/javascript" src="js/imgInit.js"></script>
     </body>
 </html>

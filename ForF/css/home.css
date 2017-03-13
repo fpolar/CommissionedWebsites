@@ -25,12 +25,23 @@ body {
     background-attachment: fixed;
 }
 .section{
-    margin-left: 7vw;
-    width:86vw;
+    margin-left: 15%;
+    width:70%;
     max-height: 75vw;
     min-height: 50vh;
     float:left;
     overflow: hidden;
+}
+.seperator{
+    float: left;
+    width:94%;
+    color:white;
+    background-color: white;
+    height:4px;
+    border-radius: 5px;
+    margin-left:2.9%;
+    margin-top: 5%;
+    margin-bottom: 5%;
 }
 a{
     text-decoration: none;
@@ -102,8 +113,8 @@ a{
     font-weight: 700;
 }
 .body{
-    font-size:1.65vmax;
-    line-height: 2.5vw;
+    font-size:1.25vmax;
+    line-height: 2.5vmax;
     padding-left: 8%;
     width: 42%;
     float:left;
@@ -114,12 +125,12 @@ a{
 }
 #cards{
     float: right;
-    padding-right: 8%;
-    width:30%;
+    width:39%;
     position: relative;
+    margin-top: 1%;
 }
 #cards img{
-    width: 28vw;
+    width: 95%;
 }
 #img1{
     position: absolute;
@@ -156,7 +167,7 @@ a{
 #support .body{
     float: right;
     text-align: right;
-    font-size: 2.1vmax;
+    font-size: 1.7vmax;
     line-height: 3.2vmax;
     padding-right: 5%;
     padding-left: 0%;
@@ -231,17 +242,19 @@ button:hover{
 }
 #card_idea .body{
     float: left !important;
-    line-height: 5.1vw;
-    padding-top: 4%;
+    line-height: 225%;
+    padding-top: 0%;
     padding-left: 2.5%;
     padding-right: 0%;
     text-align: left;
-    font-size: 2.53vw;
+    font-size: 2vmax;
 }
 #card_idea #submit_card{
     float: right !important;
-    padding-top: 4%;
+    padding-top: 0%;
     text-align: left;
+    width:50%;
+    margin-left:1.5%;
 }
 #support input{
     font-size:2.5vw;

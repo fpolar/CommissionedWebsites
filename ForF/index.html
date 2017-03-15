@@ -91,11 +91,16 @@ and open the template in the editor.
                 <div class='body'>
                     If you have a <i>bad</i> idea for a card, share it with us here!
                 </div>
-                <form id="submit_card" >
-                    <input id="card_idea" maxlength="100">
-
+                <form method="POST" id="submit_card" action="https://script.google.com/macros/s/AKfycbxN4wQ2iyiulL7RRZY0DWqQ_C5sIN15EkfsxI4IkAfoS2ecjCI7/exec">
+                    <fieldset class="pure-group">
+                        <input id="card_idea" name="card_idea" placeholder="" />
+                    </fieldset>
                     <button id="support_submit">Submit</button>
                 </form>
+                <div style="display:none;" id="thankyou_message" class="body">
+                    Thanks for the suggestion! We're sure it was <b><i>great</i></b>
+                </div>
+
             </div>
         </div>
 
@@ -121,5 +126,6 @@ and open the template in the editor.
         <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>-->
         <script src="js/jquery-3.1.1.min.js"></script>
         <script type="text/javascript" src="js/imgInit.js"></script>
+        <script type="text/javascript" src="js/submission_handler.js"></script>
     </body>
 </html>

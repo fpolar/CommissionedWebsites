@@ -47,6 +47,16 @@ a{
     text-decoration: none;
     color:white;
 }
+fieldset{
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    -webkit-padding-before: 0em;
+    -webkit-padding-start: 0em;
+    -webkit-padding-end: 0em;
+    -webkit-padding-after: 0em;
+    min-width: -webkit-min-content;
+    border: none;
+}
 
 /*header*/
 #header{
@@ -241,13 +251,15 @@ button:hover{
     margin-bottom: 5%;
 }
 #card_idea .body{
-    float: left !important;
+    float: left;
+    /*float: left !important;*/
     line-height: 225%;
     padding-top: 0%;
     padding-left: 2.5%;
     padding-right: 0%;
     text-align: left;
     font-size: 2vmax;
+    margin-left: 2.2vw;
 }
 #card_idea #submit_card{
     float: right !important;
@@ -264,7 +276,6 @@ button:hover{
     color: white;
     background-color: #f5e3bd;
     background-image: url("../imgs/bg22.jpg");
-    background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 115vw;
     transition: background-image 1s;
@@ -281,6 +292,17 @@ button:hover{
     outline: none;
     margin-top: 1%;
     margin-bottom: 1%;
+}
+#thankyou_message{
+    text-align: center !important;
+    margin-left: 3.5vw;
+    padding-left:0vw !important;
+    background-image: url("../imgs/bg22.jpg");
+    background-attachment: fixed;
+    background-size: 115vw;
+    border: .5vh solid #f5e3bd;
+    border-radius: 1.5vh;
+    margin-top: -.5vh;
 }
 
 /*footer css*/

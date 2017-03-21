@@ -1,0 +1,25 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : Feb 10, 2017, 2:35:31 PM
+    Author     : theon
+*/
+
+.slick-dots li.slick-active button:before, .slick-dots li button:before{
+    color: white;
+}
+.slick-prev{
+    left:-.5%;
+}
+.slick-next{
+    right:-5%;
+}
+.slideshow2 .slick-prev{
+    left:-1.5%;
+}
+.slideshow2 .slick-next{
+    right:-7%;
+}

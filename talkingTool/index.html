@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Talking Tool</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="talking.css"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+    </head>
+    <body>
+        <div id="media">
+            <video id="v" poster="img/thumb/spy_thumb.png">
+                <source src="videos/spy_sample.mp4" type="video/mp4">
+            </video>
+            <div id="slide">
+                <img id ="pp" src="img/play.png" onclick="letsPlay()">
+                <input id="sld" type="range" min="0" max="100" value="0">
+            </div>
+            <div id="waveform_container">
+                <img id="waveform" src ="img/waveform/spy_audio.png">
+                <div id="selector"><div class="trans"></div></div>
+            </div>
+        </div>
+        <div id="menu">
+            <input id="name" placeholder="insert character name">
+            <button id="start" onclick="setStart()">starts talking</button>
+            <button id="stop" onclick="setEnd()">stops talking</button>
+            <button id="clear" onclick="clearCurrent(false)">clear</button>
+            <button id="submit" onclick="clearCurrent(true)">submit</button>
+            <div id="lastSub"></div>
+        </div>
+        <script src="js/talking.js"></script>
+    </body>
+</html>

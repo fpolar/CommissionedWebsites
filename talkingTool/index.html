@@ -10,20 +10,23 @@ and open the template in the editor.
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" type="text/css" href="talking.css"/>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
     </head>
     <body>
         <div id="media">
-            <video id="v" poster="img/thumb/spy_thumb.png">
+            <video muted id="v" poster="img/thumb/spy_thumb.png">
                 <source src="videos/spy_sample.mp4" type="video/mp4">
             </video>
             <div id="slide">
                 <img id ="pp" src="img/play.png" onclick="letsPlay()">
-                <input id="sld" type="range" min="0" max="100" value="0">
+                <input id="sld" onmousedown="selectScroll()"
+                       onmousedown="stopScroll()" type="range" min="0" max="100" value="50">
             </div>
             <div id="waveform_container">
-                <img id="waveform" src ="img/waveform/spy_audio.png">
+                <!--<img id="waveform" src ="img/waveform/spy_audio.png">-->
+                <div id="waveform"></div>
                 <div id="selector"><div class="trans"></div></div>
+                <div id="start_selector"><div class="trans"></div></div>
+                <div id="end_selector"><div class="trans"></div></div>
             </div>
         </div>
         <div id="menu">
@@ -33,7 +36,9 @@ and open the template in the editor.
             <button id="clear" onclick="clearCurrent(false)">clear</button>
             <button id="submit" onclick="clearCurrent(true)">submit</button>
             <div id="lastSub"></div>
-        </div>
+        </div>    
+        <script src="//cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.3.2/wavesurfer.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
         <script src="js/talking.js"></script>
     </body>
 </html>

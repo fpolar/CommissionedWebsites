@@ -5,21 +5,56 @@
  */
 var myVideo = document.getElementById("v");
 var pButton = document.getElementById("pp");
+var wf = document.getElementById("waveform");
+var wfc = document.getElementById("waveform_container");
 var sld = document.getElementById("sld");
+
 var namesAndTimes = [];
 var currNameAndTime = ["-1", "-1", "-1"];
 
 var refreshID;
+var scrollInterval;
+var scrollOn = false;
+
+var newWidth = 100 * myVideo.duration;
+wf.style.width = "" + newWidth + "%";
+
+var wavesurfer = WaveSurfer.create({
+    container: '#waveform',
+    waveColor: 'violet',
+    progressColor: 'purple',
+    normalize: true
+});
+wavesurfer.load('videos/spy_sample.mp4');
 
 $("input").mouseup(function ()
 {
     //setting current time of video according to slider
     var dur = myVideo.duration;
     myVideo.currentTime = sld.value * dur / 100;
+    
+//    //setting current time of video according to slider
+//    var dur = myVideo.duration;
+//    console.log(wfc.scrollLeft);
+//    console.log(wfc.clientWidth);
+//    console.log(wf.clientWidth);
+//    var tempay = 
+//    wfc.scrollLeft/wfc.clientwidth;// + sld.value/100*wf.clientWidth * dur / 100;
+//    console.log(tempay);
+//    myVideo.currentTime = tempay;
+//    wavesurfer.seekTo(myVideo.currentTime/dur);
+//    //above takes how much user has scrolled out of total and 
+//    //adds how far slider is and makes it the percent of the way user is into the video
+
 
     //setting new position of waveform selector;
-    var wf = document.getElementById("selector");
-    wf.style.left = sld.value + "%";
+    var wfs = document.getElementById("selector");
+    var newSldPos = wfc.clientWidth *sld.value/100 + wfc.scrollLeft;
+    console.log(wfc.clientWidth);
+    console.log(wfc.scrollLeft);
+    console.log(newSldPos);
+    wfs.style.left = newSldPos + "px";
+//    wfs.style.left = (sld.value + wfc.scrollLeft/newWidth) + "%";
 
 });
 
@@ -28,12 +63,14 @@ function letsPlay()
 
     if (myVideo.paused)
     {
+        wavesurfer.play();
         myVideo.play();
         pp.src = "img/pause.png";
         refreshID = setInterval(refreshSlider, 5);
     } else
     {
         myVideo.pause();
+        wavesurfer.pause();
         pp.src = "img/play.png";
         clearInterval(refreshID);
     }
@@ -46,8 +83,6 @@ function refreshSlider()
 
     var new_pos = curr_sec / dur * 100;
 
-    console.log(new_pos);
-
     sld.value = new_pos;
 
     //setting new position of waveform selector;
@@ -58,29 +93,28 @@ function refreshSlider()
 function setStart()
 {
     currNameAndTime[0] = document.getElementById("name").value;
-    if (currNameAndTime[1] == -1)
+    if (currNameAndTime[1] === -1)
     {
         console.log("set start if");
         currNameAndTime[1] = myVideo.currentTime;
 
-        var wfc = document.getElementById("waveform_container");
-        wfc.innerHTML = wfc.innerHTML + "<div id=\"start_selector\"><div class=\"trans\"></div></div>";
-        document.getElementById("start_selector").style.left = document.getElementById("selector").style.left;
+        document.getElementById("start_selector").style.left =
+                document.getElementById("selector").style.left;
+        document.getElementById("start_selector").style.display = "block";
     }
 }
 
 function setEnd()
 {
     currNameAndTime[0] = document.getElementById("name").value;
-    if (currNameAndTime[2] == -1)
+    if (currNameAndTime[2] === -1)
     {
         console.log("set end");
         currNameAndTime[2] = myVideo.currentTime;
 
-        var wfc = document.getElementById("waveform_container");
-        wfc.innerHTML = wfc.innerHTML + "<div id=\"end_selector\"><div class=\"trans\"></div></div>";
-        document.getElementById("end_selector").style.left = document.getElementById("selector").style.left;
-
+        document.getElementById("end_selector").style.left =
+                document.getElementById("selector").style.left;
+        document.getElementById("end_selector").style.display = "block";
     }
 }
 
@@ -95,7 +129,41 @@ function clearCurrent(save)
     }
     var s = document.getElementById("start_selector");
     var e = document.getElementById("end_selector");
-    s.parentNode.removeChild(s);
-    e.parentNode.removeChild(e);
+    e.style.display = s.style.display = "none";
     currNameAndTime = ["-1", "-1", "-1"];
+}
+
+function selectScroll()
+{
+    if (!scrollOn && sld.value >= 95)
+    {
+//        console.log("scrolling");
+        wfc.scrollLeft = wfc.scrollLeft + 10;
+        clearInterval(scrollInterval);
+        scrollInterval = setInterval(selectScroll, 100);
+        scrollOn = true;
+    } else if (scrollOn && sld.value >= 95)
+    {
+//        console.log("scrolling");
+        wfc.scrollLeft = wfc.scrollLeft + 10;
+    } else if (scrollOn && sld.value < 95)
+    {
+//        console.log("scrolling off");
+        clearInterval(scrollInterval);
+        scrollOn = false;
+    } else if (!scrollOn && sld.value < 95)
+    {
+//        console.log("not scrolling");
+        scrollInterval = setInterval(selectScroll, 5);
+    }
+}
+
+function stopScroll()
+{
+    clearInterval(scrollInterval);
+    if (scrollOn)
+    {
+        console.log("scrolling off");
+        scrollOn = false;
+    }
 }

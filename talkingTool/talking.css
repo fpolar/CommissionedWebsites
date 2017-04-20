@@ -26,11 +26,16 @@ video, #waveform_container, #slide{
 #waveform_container{
     height: 30vh;
     overflow: hidden;
+    overflow-x: scroll;
 }
 #waveform{
-    width:100%;
-    height:100%;
+    position: absolute;
+    width: 0%;   
+    height:30vh;
     left: 0px;
+}
+wave, canvas{
+    height: 30vh !important;
 }
 #pp{
     width: 5%;
@@ -39,6 +44,7 @@ input{
     width: 100%;
 }
 #selector, #start_selector, #end_selector{
+    height: 20vh;
     opacity: .5;
     width:1%;
     z-index: 5;
@@ -47,6 +53,7 @@ input{
     left:49%;
 }
 #start_selector, #end_selector{
+    display: none;
     z-index: 3;
     position: absolute;
     top: 0px;

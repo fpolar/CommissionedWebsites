@@ -23,6 +23,7 @@ body {
     background-repeat: repeat-y;
     background-size: 115vw;
     background-attachment: fixed;
+    background-repeat: no-repeat;
 }
 .section{
     margin-left: 15%;

@@ -9,6 +9,8 @@ $(document).ready(function () {
     $('.slideshow').slick({
         dots: true,
         autoplaySpeed: 4000,
+        slidesToShow: 3,
+        slidesToScroll: 1,
         autoplay: true,
         arrows: true
     });

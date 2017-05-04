@@ -3,14 +3,19 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+//initializing everything
 var myVideo = document.getElementById("v");
-var pButton = document.getElementById("pp");
+var pButton = document.getElementById("pp");//play/pause button
 var wf = document.getElementById("waveform");
 var wfc = document.getElementById("waveform_container");
-var sld = document.getElementById("sld");
+var wfs = document.getElementById("selector");//the selector
+var sld = document.getElementById("sld");//the slider
+
+var syncPoints = [wfc, wfs, sld];//array of possible points to sync from
 
 var namesAndTimes = [];
-var currNameAndTime = ["-1", "-1", "-1"];
+var currNameAndTime = ["-1", -1, -1];
 
 var refreshID;
 var scrollInterval;
@@ -27,72 +32,78 @@ var wavesurfer = WaveSurfer.create({
 });
 wavesurfer.load('videos/spy_sample.mp4');
 
-$("input").mouseup(function ()
+document.onkeyup = function(event){
+    var key = event.keyCode;
+    if(key === 90)
+    {
+        setStart();
+    }
+    if(key === 88)
+    {
+        setEnd();
+    }
+    if(key === 83)
+    {
+        clearCurrent(true);
+    }
+    if(key === 65)
+    {
+        clearCurrent(false);
+    }
+    if(key === 32)
+    {
+        letsPlay();
+    }
+};
+//end of initialization
+
+function sync()
 {
-    //setting current time of video according to slider
-    var dur = myVideo.duration;
-    myVideo.currentTime = sld.value * dur / 100;
-    
-//    //setting current time of video according to slider
-//    var dur = myVideo.duration;
-//    console.log(wfc.scrollLeft);
-//    console.log(wfc.clientWidth);
-//    console.log(wf.clientWidth);
-//    var tempay = 
-//    wfc.scrollLeft/wfc.clientwidth;// + sld.value/100*wf.clientWidth * dur / 100;
-//    console.log(tempay);
-//    myVideo.currentTime = tempay;
-//    wavesurfer.seekTo(myVideo.currentTime/dur);
-//    //above takes how much user has scrolled out of total and 
-//    //adds how far slider is and makes it the percent of the way user is into the video
-
-
-    //setting new position of waveform selector;
-    var wfs = document.getElementById("selector");
-    var newSldPos = wfc.clientWidth *sld.value/100 + wfc.scrollLeft;
-    console.log(wfc.clientWidth);
-    console.log(wfc.scrollLeft);
-    console.log(newSldPos);
-    wfs.style.left = newSldPos + "px";
-//    wfs.style.left = (sld.value + wfc.scrollLeft/newWidth) + "%";
-
-});
+    if(myVideo.ended)
+    {
+        clearInterval(refreshID);
+        pp.src = "img/play.png";
+        myVideo.currentTime = 0;
+        return;
+    }
+    else if (!(myVideo.paused))
+    {
+        wfc.scrollLeft = (myVideo.currentTime / myVideo.duration) * wf.clientWidth;
+        sld.value = 0;
+        var newPosition = wfc.scrollLeft + sld.value / 100 * wfc.clientWidth;
+        var offsetSld = 0;
+        wfs.style.left = newPosition + offsetSld + "px";
+        console.log("video playing");
+    } else
+    {
+        var newPosition = wfc.scrollLeft + sld.value / 100 * wfc.clientWidth;
+        wfs.style.left = newPosition + "px";
+        var vidPercent = newPosition / wf.clientWidth;
+        myVideo.currentTime = vidPercent*myVideo.duration;
+        console.log("video not playing");
+        clearInterval(refreshID);
+    }
+}
 
 function letsPlay()
 {
-
     if (myVideo.paused)
     {
-        wavesurfer.play();
         myVideo.play();
         pp.src = "img/pause.png";
-        refreshID = setInterval(refreshSlider, 5);
+        refreshID = setInterval(sync, 5);
     } else
     {
         myVideo.pause();
-        wavesurfer.pause();
         pp.src = "img/play.png";
         clearInterval(refreshID);
     }
 }
 
-function refreshSlider()
-{
-    var curr_sec = myVideo.currentTime;
-    var dur = myVideo.duration;
-
-    var new_pos = curr_sec / dur * 100;
-
-    sld.value = new_pos;
-
-    //setting new position of waveform selector;
-    var wf = document.getElementById("selector");
-    wf.style.left = new_pos + "%";
-}
-
 function setStart()
 {
     currNameAndTime[0] = document.getElementById("name").value;
+        console.log("start");
     if (currNameAndTime[1] === -1)
     {
         console.log("set start if");
@@ -116,6 +127,7 @@ function setEnd()
                 document.getElementById("selector").style.left;
         document.getElementById("end_selector").style.display = "block";
     }
+        console.log("end");
 }
 
 function clearCurrent(save)
@@ -127,34 +139,33 @@ function clearCurrent(save)
         namesAndTimes.push(currNameAndTime);
         document.getElementById("lastSub").innerHTML = "Submitted: " + currNameAndTime[0] + " talked from " + currNameAndTime[1] + " to " + currNameAndTime[2];
     }
+    else{
+        document.getElementById("lastSub").innerHTML = "Cleared";
+    }
     var s = document.getElementById("start_selector");
     var e = document.getElementById("end_selector");
     e.style.display = s.style.display = "none";
-    currNameAndTime = ["-1", "-1", "-1"];
+    currNameAndTime = ["-1", -1, -1];
 }
 
 function selectScroll()
 {
     if (!scrollOn && sld.value >= 95)
     {
-//        console.log("scrolling");
-        wfc.scrollLeft = wfc.scrollLeft + 10;
+        wfc.scrollLeft = wfc.scrollLeft + 5;
         clearInterval(scrollInterval);
         scrollInterval = setInterval(selectScroll, 100);
         scrollOn = true;
     } else if (scrollOn && sld.value >= 95)
     {
-//        console.log("scrolling");
-        wfc.scrollLeft = wfc.scrollLeft + 10;
+        wfc.scrollLeft = wfc.scrollLeft + 5;
     } else if (scrollOn && sld.value < 95)
     {
-//        console.log("scrolling off");
         clearInterval(scrollInterval);
         scrollOn = false;
     } else if (!scrollOn && sld.value < 95)
     {
-//        console.log("not scrolling");
-        scrollInterval = setInterval(selectScroll, 5);
+        scrollInterval = setInterval(selectScroll, 100);
     }
 }
 

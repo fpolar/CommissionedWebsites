@@ -32,41 +32,44 @@ var wavesurfer = WaveSurfer.create({
 });
 wavesurfer.load('videos/spy_sample.mp4');
 
-document.onkeyup = function(event){
-    var key = event.keyCode;
-    if(key === 90)
+document.onkeyup = function (event) {
+    if (!(document.getElementById("name") === document.activeElement))
     {
-        setStart();
-    }
-    if(key === 88)
-    {
-        setEnd();
-    }
-    if(key === 83)
-    {
-        clearCurrent(true);
-    }
-    if(key === 65)
-    {
-        clearCurrent(false);
-    }
-    if(key === 32)
-    {
-        letsPlay();
+        var key = event.keyCode;
+        if (key === 90)
+        {
+            setStart();
+        }
+        if (key === 88)
+        {
+            setEnd();
+        }
+        if (key === 83)
+        {
+            clearCurrent(true);
+        }
+        if (key === 65)
+        {
+            clearCurrent(false);
+        }
+        if (key === 32)
+        {
+            letsPlay();
+        }
     }
 };
 //end of initialization
 
 function sync()
 {
-    if(myVideo.ended)
+    if (myVideo.ended)
     {
-        clearInterval(refreshID);
+        myVideo.pause();
+//        clearInterval(refreshID);
         pp.src = "img/play.png";
         myVideo.currentTime = 0;
         return;
-    }
-    else if (!(myVideo.paused))
+    } else if (!(myVideo.paused))
     {
         wfc.scrollLeft = (myVideo.currentTime / myVideo.duration) * wf.clientWidth;
         sld.value = 0;
@@ -74,14 +77,15 @@ function sync()
         var offsetSld = 0;
         wfs.style.left = newPosition + offsetSld + "px";
         console.log("video playing");
+        setTimeout(sync, 10);
     } else
     {
         var newPosition = wfc.scrollLeft + sld.value / 100 * wfc.clientWidth;
         wfs.style.left = newPosition + "px";
         var vidPercent = newPosition / wf.clientWidth;
-        myVideo.currentTime = vidPercent*myVideo.duration;
+        myVideo.currentTime = vidPercent * myVideo.duration;
         console.log("video not playing");
-        clearInterval(refreshID);
+//        clearInterval(refreshID);
     }
 }
 
@@ -91,19 +95,19 @@ function letsPlay()
     {
         myVideo.play();
         pp.src = "img/pause.png";
-        refreshID = setInterval(sync, 5);
+        sync();
     } else
     {
         myVideo.pause();
         pp.src = "img/play.png";
-        clearInterval(refreshID);
+
     }
 }
 
 function setStart()
 {
     currNameAndTime[0] = document.getElementById("name").value;
-        console.log("start");
+    console.log("start");
     if (currNameAndTime[1] === -1)
     {
         console.log("set start if");
@@ -127,7 +131,7 @@ function setEnd()
                 document.getElementById("selector").style.left;
         document.getElementById("end_selector").style.display = "block";
     }
-        console.log("end");
+    console.log("end");
 }
 
 function clearCurrent(save)
@@ -136,10 +140,32 @@ function clearCurrent(save)
     if (save)
     {
         console.log("save");
+        var extras = "";
+        if (document.getElementById("music").checked)
+        {
+            extras += "music, ";
+        }
+        if (document.getElementById("speech").checked)
+        {
+            extras += "background speech, ";
+        }
+        if (document.getElementById("noises").checked)
+        {
+            extras += "background noises, ";
+        }
+        if (document.getElementById("animal").checked)
+        {
+            extras += "animal sounds, ";
+        }
+        if (extras === "")
+        {
+            extras = " with no outside sound";
+        } else {
+            extras = " with " + extras.substr(0, extras.length - 3);
+        }
         namesAndTimes.push(currNameAndTime);
-        document.getElementById("lastSub").innerHTML = "Submitted: " + currNameAndTime[0] + " talked from " + currNameAndTime[1] + " to " + currNameAndTime[2];
-    }
-    else{
+        document.getElementById("lastSub").innerHTML = "Submitted: " + currNameAndTime[0] + " talked from " + currNameAndTime[1] + " to " + currNameAndTime[2] + extras;
+    } else {
         document.getElementById("lastSub").innerHTML = "Cleared";
     }
     var s = document.getElementById("start_selector");

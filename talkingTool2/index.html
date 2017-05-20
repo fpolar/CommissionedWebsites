@@ -13,16 +13,16 @@ and open the template in the editor.
     </head>
     <body>
         <div id="media">
-            <video id="v" poster="img/thumb/spy_thumb.png">
+            <!--<video id="v" poster="img/thumb/spy_thumb.png">-->         
+            <video id="v">
                 <source src="videos/spy_sample.mp4" type="video/mp4">
             </video>
             <div id="slide">
                 <img id ="pp" src="img/play.png" onclick="letsPlay()">
                 <input id="sld" onclick="sync()"  onmousedown="selectScroll()"
-                     onmouseup="stopScroll()" type="range" min="0" max="100" value="50">
+                       onmouseup="stopScroll()" type="range" min="0" max="100" value="50">
             </div>
             <div id="waveform_container" onscroll="sync()">
-                <!--<img id="waveform" src ="img/waveform/spy_audio.png">-->
                 <div id="waveform"></div>
                 <div id="selector"><div class="trans"></div></div>
                 <div id="start_selector"><div class="trans"></div></div>
@@ -30,19 +30,25 @@ and open the template in the editor.
             </div>
         </div>
         <div id="menu">
-            <div id = "notes">
-                <br>
-                working on integrating  with database then will add character key up here.
-                <br>
-            </div>
             <div id = "instructions">
                 <br>
                 shortcuts: z = mark start; x = mark end; a = clear; s = submit;
+                <br>
+                <br>
+                check any of the boxes below if your current selection includes any of the noises listed
                 <br>
             </div>
             <input id="name" placeholder="insert character name">
             <button id="start" onclick="setStart()">starts talking</button>
             <button id="stop" onclick="setEnd()">stops talking</button>
+
+            <form action="" style="text-align: center">
+                <br>music<input type="checkbox" name="music" id="music" value="music"><br><br>
+                <br>background speech<input type="checkbox" name="speech" id="speech" value="speech"><br><br>
+                <br>background noises<input type="checkbox" name="noises" id="noises" value="noises"><br><br>
+                <br>animal sounds<input type="checkbox" name="animal" id="animal" value="animal"><br><br>
+            </form>
+            
             <button id="clear" onclick="clearCurrent(false)">clear</button>
             <button id="submit" onclick="clearCurrent(true)">submit</button>
             <div id="lastSub"></div>

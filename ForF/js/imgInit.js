@@ -85,6 +85,7 @@ function rndImgsAbout() {
     if (cardSlots[0].src.includes("spicy")) {
         document.getElementById('support').style.backgroundColor = '#fc2923';
         document.getElementById('support_submit').style.color = '#fc2923';
+        document.getElementById('mc-embedded-subscribe').style.color = '#fc2923';
         console.log('spicy');
 //        document.getElementById('mild').style.opacity = '0';
 //        document.getElementById('med').style.opacity = '0';
@@ -93,6 +94,7 @@ function rndImgsAbout() {
     else if (cardSlots[0].src.includes("med")) {
         document.getElementById('support').style.backgroundColor = '#fc982a';
         document.getElementById('support_submit').style.color = '#fc982a';
+        document.getElementById('mc-embedded-subscribe').style.color = '#fc982a';
         console.log('med');
 //        document.getElementById('mild').style.opacity = '0';
 //        document.getElementById('med').style.opacity = '1';
@@ -101,6 +103,7 @@ function rndImgsAbout() {
     else if (cardSlots[0].src.includes("mild")) {
         document.getElementById('support').style.backgroundColor = '#f8b600';
         document.getElementById('support_submit').style.color = '#f8b600';
+        document.getElementById('mc-embedded-subscribe').style.color = '#f8b600';
         console.log('mild');
 //        document.getElementById('mild').style.opacity = 1;
 //        document.getElementById('med').style.opacity = 0;

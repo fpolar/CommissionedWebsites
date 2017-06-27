@@ -72,7 +72,7 @@ input{
 
 /*menu css*/
 
-#menu, #name, #start, #stop, #submit, #lastSub{
+#menu, #name, #gender, #start, #stop, #submit, #save, #lastSub{
     float: right;
 }
 #menu{
@@ -81,13 +81,21 @@ input{
     width: 25%;
     margin-top: 5%;
 }
+#name, #gender{
+	margin-top: 5%;
+}
 #start, #stop{
     width: 40%;
-    margin: 15% 30% 15% 30%;
+    margin: 10% 30% 10% 30%;
 }
-#clear, #submit{
+#clear, #save{
     width: 30%;
     margin-right:10%;
+}
+#submit{
+    width: 60%;
+    margin-top:10%;
+    margin-right:20%;
 }
 #clear{
     margin-left:10%;
@@ -95,4 +103,17 @@ input{
 #lastSub{
     width: 75%;
     margin: 15% 12.5% 15% 12.5%;
+}
+
+/*sheet css*/
+ul{
+	float: left;
+	width: 90%;
+	padding: 5%;
+}
+ul p, ul input{
+	float: none;
+	display: inline-block;
+	width: 15%;
+	margin-right: 3%;
 }

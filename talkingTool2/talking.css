@@ -7,12 +7,12 @@ and open the template in the editor.
     Created on : Mar 24, 2017, 3:19:55 PM
     Author     : theon
 */
-html, body{
-    height: 100vh;
+/*.col{
+    height: 70vh;
 }
-#media{
-    width: 70%;
-}
+.row{
+    margin-bottom: 5vh;
+}*/
 video{
     background-color: black;
 }
@@ -24,24 +24,28 @@ video, #waveform_container, #slide{
     position: relative;
 }
 #waveform_container{
-    height: 30vh;
+    height: 22vh;
     overflow: hidden;
     overflow-x: scroll;
 }
 #waveform{
     position: absolute;
     width: 0%;   
-    height:30vh;
+    height:22vh;
     left: 0px;
 }
-wave, canvas{
-    height: 30vh !important;
-}
 #pp{
-    width: 5%;
+    width: 5vh;
 }
 input{
     width: 100%;
+}
+#timer{
+    padding:1vh;
+    font-size: 120%;
+}
+#slide .row, #slide .col{
+    height: 5vh;
 }
 #selector, #start_selector, #end_selector{
     height: 20vh;
@@ -69,24 +73,28 @@ input{
     height: 100%;
     background-color: blue;
 }
-
-/*menu css*/
-
-#menu, #name, #gender, #start, #stop, #submit, #save, #lastSub{
-    float: right;
-}
 #menu{
-    position: absolute;
-    left: 72.5%;
-    width: 25%;
-    margin-top: 5%;
+    padding: 0 5%;
 }
-#name, #gender{
-	margin-top: 5%;
+#name, #gender, #start, #stop{
+    width: 100%;
+    margin: 5% 2%;
 }
-#start, #stop{
-    width: 40%;
-    margin: 10% 30% 10% 30%;
+form{
+    margin-left: 15%;
+}
+form input, .label{
+    float:left;
+}
+form input{
+    width: 10%;
+}
+form .col{
+    margin-top: 1.5vh;
+    margin-bottom: 1.5vh;
+}
+#menu button{
+    width: 100%;
 }
 #clear, #save{
     width: 30%;
@@ -104,12 +112,16 @@ input{
     width: 75%;
     margin: 15% 12.5% 15% 12.5%;
 }
+.label{
+    width: 60%;
+    color: black;
+}
 
 /*sheet css*/
 ul{
 	float: left;
 	width: 90%;
-	padding: 5%;
+	padding: 1% 5%;
 }
 ul p, ul input{
 	float: none;

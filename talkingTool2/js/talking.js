@@ -25,15 +25,17 @@ var resumeTime = 0;
 
 var newWidth = 100 * myVideo.duration;
 wf.style.width = "" + newWidth + "%";
+$(document).ready(function () {
+    console.log("ready!");
+    var wavesurfer = WaveSurfer.create({
+        container: '#waveform',
+        waveColor: 'violet',
+        progressColor: 'purple',
+        normalize: true
+    });
+    wavesurfer.load('videos/spy_sample.mp4');
 
-var wavesurfer = WaveSurfer.create({
-    container: '#waveform',
-    waveColor: 'violet',
-    progressColor: 'purple',
-    normalize: true
 });
-wavesurfer.load('videos/spy_sample.mp4');
-
 document.onkeyup = function (event) {
     if (document.activeElement.tagName !== "INPUT")
     {
@@ -79,7 +81,21 @@ function sync()
         var offsetSld = 0;
         wfs.style.left = newPosition + offsetSld + "px";
         console.log("video playing");
+        var textForTimer = '' + myVideo.currentTime;
+        textForTimer = textForTimer.substr(0, textForTimer.indexOf('.') + 7);
+//        console.log(textForTimer.indexOf(':'));
+//        console.log(textForTimer.indexOf('.'));
+//        if(textForTimer.indexOf('.') === 1)
+//        {
+//            textForTimer = textForTimer + '00:0';
+//        }
+//        else if(textForTimer.indexOf(':') === 1)
+//        {
+//            textForTimer = textForTimer + '0';  
+//        }
+        $("#timer").text(textForTimer);
         setTimeout(sync, 10);
+
     } else
     {
         var newPosition = wfc.scrollLeft + sld.value / 100 * wfc.clientWidth;
@@ -87,7 +103,8 @@ function sync()
         var vidPercent = newPosition / wf.clientWidth;
         myVideo.currentTime = vidPercent * myVideo.duration;
         console.log("video not playing");
-//        clearInterval(refreshID);
+        var textForTimer = '' + myVideo.currentTime;
+        textForTimer = textForTimer.substr(0, textForTimer.indexOf('.') + 7);
     }
 }
 
@@ -110,6 +127,7 @@ function setStart()
 {
     cName = document.getElementById("name").value;
     console.log("start");
+    letsPlay();
     if (cStart === -1)
     {
         console.log("set start if");
@@ -124,6 +142,7 @@ function setStart()
 function setEnd()
 {
     cName = document.getElementById("name").value;
+    letsPlay();
     if (cStop === -1)
     {
         console.log("set end");
@@ -163,14 +182,18 @@ function clearCurrent(save)
         {
             extras = cNoise = " with no outside sound";
         } else {
-			cNoise = extras;
+            cNoise = extras;
             extras = " with " + extras.substr(0, extras.length - 2);
         }
-		if(cName === "-1")
-			{
-				cName = document.getElementById("name").value;
-			}
-		insertCharToSheet(cName, cGender, cStart, cStop, cNoise);
+        if (cName === "-1")
+        {
+            cName = document.getElementById("name").value;
+        }
+        if (cGender === "-1")
+        {
+            cGender = document.getElementById("gender").value;
+        }
+        insertCharToSheet(cName, cGender, cStart, cStop, cNoise);
         document.getElementById("lastSub").innerHTML = "Submitted: " + cName + " talked from " + cStart + " to " + cStop + extras;
     } else {
         document.getElementById("lastSub").innerHTML = "Cleared";
@@ -178,45 +201,58 @@ function clearCurrent(save)
     var s = document.getElementById("start_selector");
     var e = document.getElementById("end_selector");
     e.style.display = s.style.display = "none";
-	
-	cName = "-1";
-	cGender = "-1";
-	cStart = -1;
-	cStop = -1;
-	cNoise = "-1";
+
+    cName = "-1";
+    cGender = "-1";
+    cStart = -1;
+    cStop = -1;
+    cNoise = "-1";
 }
 
-function insertCharToSheet(name, gender, start, stop, noises){
-	var char = document.createElement("li");
-	char.className = "timestamp";
-	//inputs
-	var nameInput = document.createElement("input");
-	nameInput.value = name;
-	nameInput.className = "nameIn";
-	var genderInput = document.createElement("input");
-	genderInput.value = gender;
-	genderInput.className = "genderIn";
-	var startInput = document.createElement("input");
-	startInput.value = start;
-	startInput.className = "startIn";
-	var stopInput = document.createElement("input");
-	stopInput.value = stop;
-	stopInput.className = "stopIn";
-	var noisesInput = document.createElement("input");
-	noisesInput.value = noises;
-	noisesInput.className = "noisesIn";
-	var editButton = document.createElement("button");
-	editButton.innerHTML = "Edit";
-	editButton.className = "editIn";
-	
-	char.appendChild(nameInput);
-	char.appendChild(genderInput);
-	char.appendChild(startInput);
-	char.appendChild(stopInput);
-	char.appendChild(noisesInput);
-	char.appendChild(editButton);
-	
-	document.getElementById("sheet").appendChild(char);
+function insertCharToSheet(name, gender, start, stop, noises) {
+    var char = document.createElement("li");
+    char.className = "timestamp";
+    //inputs
+    var nameInput = document.createElement("input");
+    nameInput.value = name;
+    nameInput.className = "nameIn";
+    var genderInput = document.createElement("input");
+    genderInput.value = gender;
+    genderInput.className = "genderIn";
+    var startInput = document.createElement("input");
+    startInput.value = start;
+    startInput.className = "startIn";
+    var stopInput = document.createElement("input");
+    stopInput.value = stop;
+    stopInput.className = "stopIn";
+    var noisesInput = document.createElement("input");
+    noisesInput.value = noises;
+    noisesInput.className = "noisesIn";
+    var editButton = document.createElement("button");
+    editButton.innerHTML = "delete";
+    editButton.className = "delete";
+
+    char.appendChild(nameInput);
+    char.appendChild(genderInput);
+    char.appendChild(startInput);
+    char.appendChild(stopInput);
+    char.appendChild(noisesInput);
+    char.appendChild(editButton);
+
+    document.getElementById("sheet").appendChild(char);
+
+    $(".startIn").on('click focus', function () {
+        console.log('start input click');
+        myVideo.currentTime = $(this).val();
+    });
+    $(".stopIn").on('click focus', function () {
+        console.log('stop input click');
+        myVideo.currentTime = $(this).val();
+    });
+    $(".delete").on('click', function () {
+        console.log('delete button click');
+        $(this).closest('.timestamp').remove();
+    });
 }
 
 function selectScroll()
@@ -250,23 +286,46 @@ function stopScroll()
     }
 }
 
+//other structures of these objects could be used
+//like every instance of a character in the sheets could add
+//to a count array for each of the characters (or create
+//new value in the array for the character) and the id for each val
+//instead of being just count it would be 'name'+count[name]
+function submit() {
+    var output = {};
+    var count = 0;
+    $('li').each(function () {
+        
+        output[count] = {
+            'character': $(this).children('.nameIn').val(),
+            'gender': $(this).children('.genderIn').val(),
+            'start': $(this).children('.startIn').val(),
+            'stop': $(this).children('.stopIn').val(),
+            'noises': $(this).children('.noisesIn').val()
+        };
+    });
+    var txtFile = "output.txt";
+    var file = new File([""], txtFile);
+    var str = JSON.stringify(output, null, 4);
+    console.log(str);
+}
 //$("#sheet").on('click', 'li', (function(){
-$("ul").on('click', '.edit', function(){
-	//so right now im thinking this would just delete it and then re-add it anywhere in the list
-	//but later I would want the list sorted by start time so this would be cleaner
-	//might be a little slow with larger lists, not sure
-	//use this for reference later
-	resumeTime = myVideo.currentTime;
-	var name = $(this).closest('.name');
-	var gender = $(this).closest('.gender');
-	var start = $(this).closest('.start');
-	var stop = $(this).closest('.stop');
-	var noises = $(this).closest('.noises');
-	console.log("clicked on a character timestamp");
-	//change wavelength scroll, and three selector positions
-	wfs.style.left = "50%";
-    document.getElementById("start_selector").style.left = "25%";
-    document.getElementById("start_selector").style.display = "block";
-    document.getElementById("end_selector").style.left = "75%";
-    document.getElementById("end_selector").style.display = "block";
-});
+//$("ul").on('click', '.edit', function () {
+//    //so right now im thinking this would just delete it and then re-add it anywhere in the list
+//    //but later I would want the list sorted by start time so this would be cleaner
+//    //might be a little slow with larger lists, not sure
+//    //use this for reference later
+//    resumeTime = myVideo.currentTime;
+//    var name = $(this).closest('.name');
+//    var gender = $(this).closest('.gender');
+//    var start = $(this).closest('.start');
+//    var stop = $(this).closest('.stop');
+//    var noises = $(this).closest('.noises');
+//    console.log("clicked on a character timestamp");
+//    //change wavelength scroll, and three selector positions
+//    wfs.style.left = "50%";
+//    document.getElementById("start_selector").style.left = "25%";
+//    document.getElementById("start_selector").style.display = "block";
+//    document.getElementById("end_selector").style.left = "75%";
+//    document.getElementById("end_selector").style.display = "block";
+//});

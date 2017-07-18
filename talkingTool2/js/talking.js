@@ -71,40 +71,48 @@ function sync()
         myVideo.pause();
 //        clearInterval(refreshID);
         pp.src = "img/play.png";
-        myVideo.currentTime = 0;
+//        myVideo.currentTime = 0;
         return;
     } else if (!(myVideo.paused))
     {
-        wfc.scrollLeft = (myVideo.currentTime / myVideo.duration) * wf.clientWidth;
-        sld.value = 0;
-        var newPosition = wfc.scrollLeft + sld.value / 100 * wfc.clientWidth;
-        var offsetSld = 0;
-        wfs.style.left = newPosition + offsetSld + "px";
-        console.log("video playing");
+        sld.value = (myVideo.currentTime / myVideo.duration) * 100;
+//        console.log((myVideo.currentTime / myVideo.duration) * 100);
+//        console.log(sld.value);
         var textForTimer = '' + myVideo.currentTime;
         textForTimer = textForTimer.substr(0, textForTimer.indexOf('.') + 7);
-//        console.log(textForTimer.indexOf(':'));
-//        console.log(textForTimer.indexOf('.'));
-//        if(textForTimer.indexOf('.') === 1)
-//        {
-//            textForTimer = textForTimer + '00:0';
-//        }
-//        else if(textForTimer.indexOf(':') === 1)
-//        {
-//            textForTimer = textForTimer + '0';  
-//        }
+        if (textForTimer.indexOf('.') === 1)
+        {
+            textForTimer = '00:00:0' + textForTimer;
+        } else if (textForTimer.indexOf('.') === 2) {
+            textForTimer = '00:00:' + textForTimer;
+        } else if (textForTimer.indexOf(':') === 1)
+        {
+            textForTimer = '00:0' + textForTimer;
+        } else
+        {
+            textForTimer = '00:' + textForTimer;
+        }
         $("#timer").text(textForTimer);
         setTimeout(sync, 10);
-
     } else
     {
-        var newPosition = wfc.scrollLeft + sld.value / 100 * wfc.clientWidth;
-        wfs.style.left = newPosition + "px";
-        var vidPercent = newPosition / wf.clientWidth;
-        myVideo.currentTime = vidPercent * myVideo.duration;
-        console.log("video not playing");
+        var newPosition = sld.value / 100 * myVideo.duration;
+        myVideo.currentTime = newPosition;
         var textForTimer = '' + myVideo.currentTime;
         textForTimer = textForTimer.substr(0, textForTimer.indexOf('.') + 7);
+        if (textForTimer.indexOf('.') === 1 || textForTimer.indexOf('.') === -1)
+        {
+            textForTimer = '00:00:0' + textForTimer;
+        } else if (textForTimer.indexOf('.') === 2) {
+            textForTimer = '00:00:' + textForTimer;
+        } else if (textForTimer.indexOf(':') === 1)
+        {
+            textForTimer = '00:0' + textForTimer;
+        } else
+        {
+            textForTimer = '00:' + textForTimer;
+        }
+        $("#timer").text(textForTimer);
     }
 }
 
@@ -137,12 +145,17 @@ function setStart()
                 document.getElementById("selector").style.left;
         document.getElementById("start_selector").style.display = "block";
     }
+    document.getElementById("start").disabled = true;
+    document.getElementById("stop").disabled = false;
+    if (myVideo.paused)
+    {
+        letsPlay();
+    }
 }
 
 function setEnd()
 {
     cName = document.getElementById("name").value;
-    letsPlay();
     if (cStop === -1)
     {
         console.log("set end");
@@ -152,7 +165,12 @@ function setEnd()
                 document.getElementById("selector").style.left;
         document.getElementById("end_selector").style.display = "block";
     }
-    console.log("end");
+    if (!(myVideo.paused))
+    {
+        letsPlay();
+    }
+    document.getElementById("start").disabled = false;
+    document.getElementById("stop").disabled = true;
 }
 
 function clearCurrent(save)
@@ -161,6 +179,11 @@ function clearCurrent(save)
     if (save)
     {
         console.log("save");
+        if (document.getElementById("name").value === null || document.getElementById("name").value === "")
+        {
+            alert("Please fill in all the fields");
+            return;
+        }
         var extras = "";
         if (document.getElementById("music").checked)
         {
@@ -207,6 +230,12 @@ function clearCurrent(save)
     cStart = -1;
     cStop = -1;
     cNoise = "-1";
+
+    document.getElementById("name").value = '';
+    document.getElementById("music").checked = false;
+    document.getElementById("speech").checked = false;
+    document.getElementById("noises").checked = false;
+    document.getElementById("animal").checked = false;
 }
 
 function insertCharToSheet(name, gender, start, stop, noises) {
@@ -244,10 +273,14 @@ function insertCharToSheet(name, gender, start, stop, noises) {
     $(".startIn").on('click focus', function () {
         console.log('start input click');
         myVideo.currentTime = $(this).val();
+        sld.value = myVideo.currentTime / myVideo.duration * 100;
+        sync();
     });
     $(".stopIn").on('click focus', function () {
         console.log('stop input click');
         myVideo.currentTime = $(this).val();
+        sld.value = myVideo.currentTime / myVideo.duration * 100;
+        sync();
     });
     $(".delete").on('click', function () {
         console.log('delete button click');
@@ -295,7 +328,6 @@ function submit() {
     var output = {};
     var count = 0;
     $('li').each(function () {
-        
         output[count] = {
             'character': $(this).children('.nameIn').val(),
             'gender': $(this).children('.genderIn').val(),
@@ -303,12 +335,18 @@ function submit() {
             'stop': $(this).children('.stopIn').val(),
             'noises': $(this).children('.noisesIn').val()
         };
+        count++;
     });
     var txtFile = "output.txt";
     var file = new File([""], txtFile);
     var str = JSON.stringify(output, null, 4);
     console.log(str);
 }
+
+$(sld).click(function () {
+
+});
+
 //$("#sheet").on('click', 'li', (function(){
 //$("ul").on('click', '.edit', function () {
 //    //so right now im thinking this would just delete it and then re-add it anywhere in the list

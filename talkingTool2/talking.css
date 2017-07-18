@@ -24,6 +24,7 @@ video, #waveform_container, #slide{
     position: relative;
 }
 #waveform_container{
+    display: none;
     height: 22vh;
     overflow: hidden;
     overflow-x: scroll;

@@ -6,11 +6,11 @@
 
 //initializing everything
 var myVideo = document.getElementById("v");
-var pButton = document.getElementById("pp");//play/pause button
+var pButton = document.getElementById("pp");// play/pause button
 var wf = document.getElementById("waveform");
 var wfc = document.getElementById("waveform_container");
-var wfs = document.getElementById("selector");//the selector
-var sld = document.getElementById("sld");//the slider
+var wfs = document.getElementById("selector");// the selector
+var sld = document.getElementById("sld");// the slider
 
 var cName = "-1";
 var cGender = "-1";
@@ -27,14 +27,19 @@ var newWidth = 100 * myVideo.duration;
 wf.style.width = "" + newWidth + "%";
 $(document).ready(function () {
     console.log("ready!");
-    var wavesurfer = WaveSurfer.create({
-        container: '#waveform',
-        waveColor: 'violet',
-        progressColor: 'purple',
-        normalize: true
-    });
-    wavesurfer.load('videos/spy_sample.mp4');
+// var wavesurfer = WaveSurfer.create({
+// container: '#waveform',
+// waveColor: 'violet',
+// progressColor: 'purple',
+// normalize: true
+// });
+// wavesurfer.load('videos/spy_sample.mp4');
 
+});
+myVideo.addEventListener('loadedmetadata', function() {
+    console.log(myVideo.duration);
+    sld.max = myVideo.duration*100;
+    sld.val = sld.max/2;
 });
 document.onkeyup = function (event) {
     if (document.activeElement.tagName !== "INPUT")
@@ -60,24 +65,43 @@ document.onkeyup = function (event) {
         {
             letsPlay();
         }
+        if (key === 39)
+        {
+            sld.val++;
+            sync();
+        }
+        if (key === 37)
+        {
+            sld.val--;
+            sync();
+        }
     }
 };
-//end of initialization
+// end of initialization
 
+function getVideo(){
+	var newSrc = $("#videoURL").val();
+	if(newSrc !== ""){
+	myVideo.src = newSrc;
+	}
+	$("#URLPopup").hide();
+	$("#v").show();
+	$("#slide").show();
+}
 function sync()
 {
     if (myVideo.ended)
     {
         myVideo.pause();
-//        clearInterval(refreshID);
+// clearInterval(refreshID);
         pp.src = "img/play.png";
-//        myVideo.currentTime = 0;
+        console.log("ended");
         return;
     } else if (!(myVideo.paused))
     {
-        sld.value = (myVideo.currentTime / myVideo.duration) * 100;
-//        console.log((myVideo.currentTime / myVideo.duration) * 100);
-//        console.log(sld.value);
+        sld.value = myVideo.currentTime*100;
+// console.log((myVideo.currentTime / myVideo.duration) * 100);
+// console.log(sld.value);
         var textForTimer = '' + myVideo.currentTime;
         textForTimer = textForTimer.substr(0, textForTimer.indexOf('.') + 7);
         if (textForTimer.indexOf('.') === 1)
@@ -96,8 +120,9 @@ function sync()
         setTimeout(sync, 10);
     } else
     {
-        var newPosition = sld.value / 100 * myVideo.duration;
+        var newPosition = sld.value/100;
         myVideo.currentTime = newPosition;
+        console.log(myVideo.currentTime);
         var textForTimer = '' + myVideo.currentTime;
         textForTimer = textForTimer.substr(0, textForTimer.indexOf('.') + 7);
         if (textForTimer.indexOf('.') === 1 || textForTimer.indexOf('.') === -1)
@@ -189,9 +214,9 @@ function clearCurrent(save)
         {
             extras += "music, ";
         }
-        if (document.getElementById("speech").checked)
+        if (document.getElementById("humanSounds").checked)
         {
-            extras += "background speech, ";
+            extras += "human sounds, ";
         }
         if (document.getElementById("noises").checked)
         {
@@ -233,7 +258,7 @@ function clearCurrent(save)
 
     document.getElementById("name").value = '';
     document.getElementById("music").checked = false;
-    document.getElementById("speech").checked = false;
+    document.getElementById("humanSounds").checked = false;
     document.getElementById("noises").checked = false;
     document.getElementById("animal").checked = false;
 }
@@ -241,7 +266,7 @@ function clearCurrent(save)
 function insertCharToSheet(name, gender, start, stop, noises) {
     var char = document.createElement("li");
     char.className = "timestamp";
-    //inputs
+    // inputs
     var nameInput = document.createElement("input");
     nameInput.value = name;
     nameInput.className = "nameIn";
@@ -287,43 +312,42 @@ function insertCharToSheet(name, gender, start, stop, noises) {
         $(this).closest('.timestamp').remove();
     });
 }
+//
+// function selectScroll()
+// {
+// if (!scrollOn && sld.value >= 95)
+// {
+// wfc.scrollLeft = wfc.scrollLeft + 5;
+// clearInterval(scrollInterval);
+// scrollInterval = setInterval(selectScroll, 100);
+// scrollOn = true;
+// } else if (scrollOn && sld.value >= 95)
+// {
+// wfc.scrollLeft = wfc.scrollLeft + 5;
+// } else if (scrollOn && sld.value < 95)
+// {
+// clearInterval(scrollInterval);
+// scrollOn = false;
+// } else if (!scrollOn && sld.value < 95)
+// {
+// scrollInterval = setInterval(selectScroll, 100);
+// }
+// }
+//
+// function stopScroll()
+// {
+// clearInterval(scrollInterval);
+// if (scrollOn)
+// {
+// scrollOn = false;
+// }
+// }
 
-function selectScroll()
-{
-    if (!scrollOn && sld.value >= 95)
-    {
-        wfc.scrollLeft = wfc.scrollLeft + 5;
-        clearInterval(scrollInterval);
-        scrollInterval = setInterval(selectScroll, 100);
-        scrollOn = true;
-    } else if (scrollOn && sld.value >= 95)
-    {
-        wfc.scrollLeft = wfc.scrollLeft + 5;
-    } else if (scrollOn && sld.value < 95)
-    {
-        clearInterval(scrollInterval);
-        scrollOn = false;
-    } else if (!scrollOn && sld.value < 95)
-    {
-        scrollInterval = setInterval(selectScroll, 100);
-    }
-}
-
-function stopScroll()
-{
-    clearInterval(scrollInterval);
-    if (scrollOn)
-    {
-        console.log("scrolling off");
-        scrollOn = false;
-    }
-}
-
-//other structures of these objects could be used
-//like every instance of a character in the sheets could add
-//to a count array for each of the characters (or create
-//new value in the array for the character) and the id for each val
-//instead of being just count it would be 'name'+count[name]
+// other structures of these objects could be used
+// like every instance of a character in the sheets could add
+// to a count array for each of the characters (or create
+// new value in the array for the character) and the id for each val
+// instead of being just count it would be 'name'+count[name]
 function submit() {
     var output = {};
     var count = 0;
@@ -341,29 +365,9 @@ function submit() {
     var file = new File([""], txtFile);
     var str = JSON.stringify(output, null, 4);
     console.log(str);
+    $("body").html(str);
 }
 
 $(sld).click(function () {
 
 });
-
-//$("#sheet").on('click', 'li', (function(){
-//$("ul").on('click', '.edit', function () {
-//    //so right now im thinking this would just delete it and then re-add it anywhere in the list
-//    //but later I would want the list sorted by start time so this would be cleaner
-//    //might be a little slow with larger lists, not sure
-//    //use this for reference later
-//    resumeTime = myVideo.currentTime;
-//    var name = $(this).closest('.name');
-//    var gender = $(this).closest('.gender');
-//    var start = $(this).closest('.start');
-//    var stop = $(this).closest('.stop');
-//    var noises = $(this).closest('.noises');
-//    console.log("clicked on a character timestamp");
-//    //change wavelength scroll, and three selector positions
-//    wfs.style.left = "50%";
-//    document.getElementById("start_selector").style.left = "25%";
-//    document.getElementById("start_selector").style.display = "block";
-//    document.getElementById("end_selector").style.left = "75%";
-//    document.getElementById("end_selector").style.display = "block";
-//});

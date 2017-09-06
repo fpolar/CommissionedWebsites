@@ -38,6 +38,11 @@ video, #waveform_container, #slide{
 #pp{
     width: 5vh;
 }
+#URLPopup{
+	text-align: center;
+	padding: 5%;
+	padding-bottom: 10%;
+}
 input{
     width: 100%;
 }

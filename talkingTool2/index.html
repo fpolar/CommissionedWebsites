@@ -5,125 +5,134 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 -->
 <html>
-    <head>
-        <title>Talking Tool</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" type="text/css" href="talking.css"/>
-        <link rel="stylesheet" type="text/css" href="bootstrap/bootstrap.min.css"/>
-        <script src="js/jquery-3.1.1.min.js"></script>
-        <script src="bootstrap/bootstrap.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.3.2/wavesurfer.min.js"></script> 
-        <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>--> 
-    </head>
-    <body>
-        <div class="row">
-            <div class="col col-sm-7" id="media"> 
-                <video id="v">
-                    <source src="videos/spy_sample.mp4" type="video/mp4">
-                </video>
-                <div id="slide"> 
-                        <div class="col col-xs-3"><img id ="pp" src="img/play.png" onclick="letsPlay()"></div>
-                        <div id="timer" class="col col-xs-6 col-xs-offset-2">00:00:00</div>
-                    <input id="sld" onclick="sync()"  onmousedown="selectScroll()"
-                           onmouseup="stopScroll()" type="range" min="0" max="100" value="50">
-                </div>
-                <div id="waveform_container" onscroll="sync()">
-                    <div id="waveform"></div>
-                    <div id="selector">
-                        <div class="trans"></div>
-                    </div>
-                    <div id="start_selector">
-                        <div class="trans"></div>
-                    </div>
-                    <div id="end_selector">
-                        <div class="trans"></div>
-                    </div>
-                </div>
-            </div>
-            <div id="menu" class="col col-sm-5">
-                <div class="row" id = "instructions"> <br>
-                    shortcuts: z = mark start; x = mark end; a = clear; s = save; <br>
-                </div>
-                <div class="row">
-                    <div class="col-xs-6">
-                        <input id="name" placeholder="insert character name">
-                    </div>
-                    <div class="col-xs-6">
-                        <select id="gender">
-                            <option value="male">male</option>
-                            <option value="female">female</option>
-                            <option value="other">other</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-xs-6">
-                        <button id="start" onclick="setStart()">starts talking</button>
-                    </div>
+<head>
+<title>Talking Tool</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" type="text/css" href="talking.css" />
+<link rel="stylesheet" type="text/css"
+	href="bootstrap/bootstrap.min.css" />
+<script src="js/jquery-3.1.1.min.js"></script>
+<script src="bootstrap/bootstrap.min.js"></script>
+<script
+	src="//cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.3.2/wavesurfer.min.js"></script>
+<!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>-->
+</head>
+<body>
+	<div class="row">
+		<div class="col col-sm-7" id="media">
+			<div id="URLPopup">
+				<div id="URLLabel">Insert Video URL</div>
+				<input id="videoURL">
+				<button id="submitURL" style="" onclick="getVideo()">Submit URL</button>
+			</div>
+			<video id="v" style="display: none">
+				<source src="videos/spy_sample.mp4" type="video/mp4">
+			</video>
+			<div id="slide" style="display: none">
+				<div class="col col-xs-3">
+					<img id="pp" src="img/play.png" onclick="letsPlay()">
+				</div>
+				<div id="timer" class="col col-xs-6 col-xs-offset-2">00:00:00</div>
+				<input id="sld" onclick="sync()" type="range" min="0" max="100"
+					value="50">
+			</div>
+			<div id="waveform_container" onscroll="sync()">
+				<div id="waveform"></div>
+				<div id="selector">
+					<div class="trans"></div>
+				</div>
+				<div id="start_selector">
+					<div class="trans"></div>
+				</div>
+				<div id="end_selector">
+					<div class="trans"></div>
+				</div>
+			</div>
+		</div>
+		<div id="menu" class="col col-sm-5">
+			<div class="row" id="instructions">
+				<br> shortcuts: z = mark start; x = mark end; a = clear; s =
+				save; <br>
+			</div>
+			<div class="row">
+				<div class="col-xs-6">
+					<input id="name" placeholder="insert character name">
+				</div>
+				<div class="col-xs-6">
+					<select id="gender">
+						<option value="male">male</option>
+						<option value="female">female</option>
+						<option value="other">other</option>
+					</select>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-6">
+					<button id="start" onclick="setStart()">starts talking</button>
+				</div>
 
-                    <div class="col-xs-6">
-                        <button id="stop" onclick="setEnd()" disabled>stops talking</button>
-                    </div>
-                </div>
-                <div class="row" id="bg-desc">
-                    check any of the boxes below if your current selection includes any of the noises listed
-                </div>
-                <form action="" style="text-align: center">
-                    <div class="row">
-                        <div class="col col-xs-6">
-                            <div class="label label-default">
-                                music</div>
-                            <input type="checkbox" name="music" id="music" value="music">
-                        </div>
-                        <div class="col col-xs-6">
-                            <div class="label label-default">
-                                background speech</div>
-                            <input type="checkbox" name="speech" id="speech" value="speech">
-                        </div>
-                    </div>
+				<div class="col-xs-6">
+					<button id="stop" onclick="setEnd()" disabled>stops
+						talking</button>
+				</div>
+			</div>
+			<div class="row" id="bg-desc">check any of the boxes below if
+				your current selection includes any of the noises listed</div>
+			<form action="" style="text-align: center">
+				<div class="row">
+					<div class="col col-xs-6">
+						<div class="label label-default">music</div>
+						<input type="checkbox" name="music" id="music" value="music">
+					</div>
+					<div class="col col-xs-6">
+						<div class="label label-default">Human Sounds</div>
+						<input type="checkbox" name="humanSounds" id="humanSounds"
+							value="humanSounds">
+					</div>
+				</div>
 
-                    <div class="row">
-                        <div class="col col-xs-6">
-                            <div class="label label-default">
-                                background noises</div>
-                            <input type="checkbox" name="noises" id="noises" value="noises">
-                        </div>
-                        <div class="col col-xs-6">
-                            <div class="label label-default">
-                                animal noises</div>
-                            <input type="checkbox" name="animal" id="animal" value="animal">
-                        </div>
-                    </div>
-                </form>
-                <div class="row">
-                    <div class="col col-xs-6">
-                        <button id="clear" onclick="clearCurrent(false)">clear</button>
-                    </div>
-                    <div class="col col-xs-6">
-                        <button id="save" onclick="clearCurrent(true)">save</button>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col col-xs-12">
-                        <button id="submit" style="width" onclick="submit()">Finish Session</button>
-                    </div>
-                </div>
-                <div id="lastSub"></div>
-            </div>
-        </div>
-        <div class="row">
-            <ul id="sheet">
-                <li>
-                    <p>Character</p>
-                    <p>Gender</p>
-                    <p>Start</p>
-                    <p>Stop</p>
-                    <p>Noises</p>
-                </li>
-            </ul>
-        </div>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.3.2/wavesurfer.min.js"></script> 
-        <script src="js/talking.js"></script>
-    </body>
+				<div class="row">
+					<div class="col col-xs-6">
+						<div class="label label-default">background noises</div>
+						<input type="checkbox" name="noises" id="noises" value="noises">
+					</div>
+					<div class="col col-xs-6">
+						<div class="label label-default">animal noises</div>
+						<input type="checkbox" name="animal" id="animal" value="animal">
+					</div>
+				</div>
+			</form>
+			<div class="row">
+				<div class="col col-xs-6">
+					<button id="clear" onclick="clearCurrent(false)">clear</button>
+				</div>
+				<div class="col col-xs-6">
+					<button id="save" onclick="clearCurrent(true)">save</button>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col col-xs-12">
+					<button id="submit" style="" onclick="submit()">Finish
+						Session</button>
+				</div>
+			</div>
+			<div id="lastSub"></div>
+		</div>
+	</div>
+	<div class="row">
+		<ul id="sheet">
+			<li>
+				<p>Character</p>
+				<p>Gender</p>
+				<p>Start</p>
+				<p>Stop</p>
+				<p>Noises</p>
+			</li>
+		</ul>
+	</div>
+	<script
+		src="//cdnjs.cloudflare.com/ajax/libs/wavesurfer.js/1.3.2/wavesurfer.min.js"></script>
+	<script src="js/talking.js"></script>
+</body>
 </html>

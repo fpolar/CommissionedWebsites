@@ -7,9 +7,6 @@
 //initializing everything
 var myVideo = document.getElementById("v");
 var pButton = document.getElementById("pp");// play/pause button
-var wf = document.getElementById("waveform");
-var wfc = document.getElementById("waveform_container");
-var wfs = document.getElementById("selector");// the selector
 var sld = document.getElementById("sld");// the slider
 
 var cName = "-1";
@@ -24,16 +21,8 @@ var scrollOn = false;
 var resumeTime = 0;
 
 var newWidth = 100 * myVideo.duration;
-wf.style.width = "" + newWidth + "%";
 $(document).ready(function () {
     console.log("ready!");
-// var wavesurfer = WaveSurfer.create({
-// container: '#waveform',
-// waveColor: 'violet',
-// progressColor: 'purple',
-// normalize: true
-// });
-// wavesurfer.load('videos/spy_sample.mp4');
 
 });
 myVideo.addEventListener('loadedmetadata', function() {
@@ -298,13 +287,15 @@ function insertCharToSheet(name, gender, start, stop, noises) {
     $(".startIn").on('click focus', function () {
         console.log('start input click');
         myVideo.currentTime = $(this).val();
-        sld.value = myVideo.currentTime / myVideo.duration * 100;
+        sld.value = myVideo.currentTime / myVideo.duration * sld.max;
+        console.log(myVideo.currentTime);
+        console.log( sld.value);
         sync();
     });
     $(".stopIn").on('click focus', function () {
         console.log('stop input click');
         myVideo.currentTime = $(this).val();
-        sld.value = myVideo.currentTime / myVideo.duration * 100;
+        sld.value = myVideo.currentTime / myVideo.duration * sld.max;
         sync();
     });
     $(".delete").on('click', function () {
@@ -312,43 +303,12 @@ function insertCharToSheet(name, gender, start, stop, noises) {
         $(this).closest('.timestamp').remove();
     });
 }
-//
-// function selectScroll()
-// {
-// if (!scrollOn && sld.value >= 95)
-// {
-// wfc.scrollLeft = wfc.scrollLeft + 5;
-// clearInterval(scrollInterval);
-// scrollInterval = setInterval(selectScroll, 100);
-// scrollOn = true;
-// } else if (scrollOn && sld.value >= 95)
-// {
-// wfc.scrollLeft = wfc.scrollLeft + 5;
-// } else if (scrollOn && sld.value < 95)
-// {
-// clearInterval(scrollInterval);
-// scrollOn = false;
-// } else if (!scrollOn && sld.value < 95)
-// {
-// scrollInterval = setInterval(selectScroll, 100);
-// }
-// }
-//
-// function stopScroll()
-// {
-// clearInterval(scrollInterval);
-// if (scrollOn)
-// {
-// scrollOn = false;
-// }
-// }
-
 // other structures of these objects could be used
 // like every instance of a character in the sheets could add
 // to a count array for each of the characters (or create
 // new value in the array for the character) and the id for each val
 // instead of being just count it would be 'name'+count[name]
-function submit() {
+function get_results() {
     var output = {};
     var count = 0;
     $('li').each(function () {
@@ -364,10 +324,12 @@ function submit() {
     var txtFile = "output.txt";
     var file = new File([""], txtFile);
     var str = JSON.stringify(output, null, 4);
-    console.log(str);
-    $("body").html(str);
+    return str;
 }
 
-$(sld).click(function () {
-
+$(sld).mousedown(function () {
+    if (!(myVideo.paused))
+    {
+        letsPlay();
+    }
 });

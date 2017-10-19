@@ -1,135 +1,157 @@
-/*
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
-*/
 /* 
     Created on : Mar 24, 2017, 3:19:55 PM
-    Author     : theon
+    Author     : Frank Pol
 */
-/*.col{
-    height: 70vh;
+video {
+	background-color: black;
 }
-.row{
-    margin-bottom: 5vh;
-}*/
-video{
-    background-color: black;
+
+video, #waveform_container, #slide {
+	width: 100%;
 }
-video, #waveform_container, #slide{
-    width:100%;
+
+#slide, video, #waveform_container, input, input, img {
+	float: left;
+	position: relative;
 }
-#slide, video, #waveform_container, input, input, img{
-    float: left;
-    position: relative;
+
+#waveform_container {
+	display: none;
+	height: 22vh;
+	overflow: hidden;
+	overflow-x: scroll;
 }
-#waveform_container{
-    display: none;
-    height: 22vh;
-    overflow: hidden;
-    overflow-x: scroll;
+
+#waveform {
+	position: absolute;
+	width: 0%;
+	height: 22vh;
+	left: 0px;
 }
-#waveform{
-    position: absolute;
-    width: 0%;   
-    height:22vh;
-    left: 0px;
+
+#pp {
+	width: 5vh;
 }
-#pp{
-    width: 5vh;
-}
-#URLPopup{
+
+#URLPopup {
 	text-align: center;
 	padding: 5%;
 	padding-bottom: 10%;
 }
-input{
-    width: 100%;
+
+input {
+	width: 100%;
 }
-#timer{
-    padding:1vh;
-    font-size: 120%;
+
+#timer {
+	padding: 1vh;
+	font-size: 120%;
 }
-#slide .row, #slide .col{
-    height: 5vh;
+
+#slide .row, #slide .col {
+	height: 5vh;
 }
-#selector, #start_selector, #end_selector{
-    height: 20vh;
-    opacity: .5;
-    width:1%;
-    z-index: 5;
-    position:relative;
-    height:100%;
-    left:49%;
+
+#selector, #start_selector, #end_selector {
+	height: 20vh;
+	opacity: .5;
+	width: 1%;
+	z-index: 5;
+	position: relative;
+	height: 100%;
+	left: 49%;
 }
-#start_selector, #end_selector{
-    display: none;
-    z-index: 3;
-    position: absolute;
-    top: 0px;
+
+#start_selector, #end_selector {
+	display: none;
+	z-index: 3;
+	position: absolute;
+	top: 0px;
 }
-#start_selector .trans{
-    background-color: green;
+
+#start_selector .trans {
+	background-color: green;
 }
-#end_selector .trans{
-    background-color: red;
+
+#end_selector .trans {
+	background-color: red;
 }
-.trans{
-    width:100%;
-    height: 100%;
-    background-color: blue;
+
+.trans {
+	width: 100%;
+	height: 100%;
+	background-color: blue;
 }
-#menu{
-    padding: 0 5%;
+
+#menu {
+	padding: 0 5%;
 }
-#name, #gender, #start, #stop{
-    width: 100%;
-    margin: 5% 2%;
+
+#name, #gender, #start, #stop {
+	width: 100%;
+	margin: 5% 2%;
 }
-form{
-    margin-left: 15%;
+
+form {
+	margin-left: 15%;
 }
-form input, .label{
-    float:left;
+
+form input, .label {
+	float: left;
 }
-form input{
-    width: 10%;
+
+form input[type="checkbox"] {
+	width: 10%;
 }
-form .col{
-    margin-top: 1.5vh;
-    margin-bottom: 1.5vh;
+
+form .col {
+	margin-top: 1.5vh;
+	margin-bottom: 1.5vh;
 }
-#menu button{
-    width: 100%;
+
+#menu button {
+	width: 100%;
 }
-#clear, #save{
-    width: 30%;
-    margin-right:10%;
+
+#clear, #save {
+	width: 30%;
+	margin-right: 10%;
 }
-#submit{
-    width: 60%;
-    margin-top:10%;
-    margin-right:20%;
+
+#submit {
+	width: 60%;
+	margin-top: 10%;
+	margin-right: 20%;
 }
-#clear{
-    margin-left:10%;
+
+#clear {
+	margin-left: 10%;
 }
-#lastSub{
-    width: 75%;
-    margin: 15% 12.5% 15% 12.5%;
+
+#lastSub {
+	width: 75%;
+	margin: 15% 12.5% 15% 12.5%;
 }
-.label{
-    width: 60%;
-    color: black;
+
+.label {
+	width: 60%;
+	color: black;
+}
+
+#finish {
+	float: left;
+	margin-top: 4%;
+	width: 88%;
 }
 
 /*sheet css*/
-ul{
+ul {
 	float: left;
 	width: 90%;
 	padding: 1% 5%;
 }
-ul p, ul input{
+
+ul p, ul input {
 	float: none;
 	display: inline-block;
 	width: 15%;

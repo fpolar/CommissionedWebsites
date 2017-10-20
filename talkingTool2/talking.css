@@ -2,33 +2,22 @@
     Created on : Mar 24, 2017, 3:19:55 PM
     Author     : Frank Pol
 */
+
+#media {
+	z-index: 10;
+}
 video {
 	background-color: black;
 }
 
-video, #waveform_container, #slide {
+video, #slide {
 	width: 100%;
 }
 
-#slide, video, #waveform_container, input, input, img {
+#slide, video, input, input, img {
 	float: left;
 	position: relative;
 }
-
-#waveform_container {
-	display: none;
-	height: 22vh;
-	overflow: hidden;
-	overflow-x: scroll;
-}
-
-#waveform {
-	position: absolute;
-	width: 0%;
-	height: 22vh;
-	left: 0px;
-}
-
 #pp {
 	width: 5vh;
 }
@@ -46,41 +35,11 @@ input {
 #timer {
 	padding: 1vh;
 	font-size: 120%;
+	text-align: start;
 }
 
 #slide .row, #slide .col {
 	height: 5vh;
-}
-
-#selector, #start_selector, #end_selector {
-	height: 20vh;
-	opacity: .5;
-	width: 1%;
-	z-index: 5;
-	position: relative;
-	height: 100%;
-	left: 49%;
-}
-
-#start_selector, #end_selector {
-	display: none;
-	z-index: 3;
-	position: absolute;
-	top: 0px;
-}
-
-#start_selector .trans {
-	background-color: green;
-}
-
-#end_selector .trans {
-	background-color: red;
-}
-
-.trans {
-	width: 100%;
-	height: 100%;
-	background-color: blue;
 }
 
 #menu {
@@ -89,19 +48,18 @@ input {
 
 #name, #gender, #start, #stop {
 	width: 100%;
-	margin: 5% 2%;
-}
-
-form {
-	margin-left: 15%;
-}
-
-form input, .label {
-	float: left;
+	margin: 5% 0%;
 }
 
 form input[type="checkbox"] {
-	width: 10%;
+	width: 12%;
+}
+
+form p{	
+	margin: 0;
+	margin-left: 10%;
+	width: 68%;
+	float: left;
 }
 
 form .col {
@@ -123,11 +81,6 @@ form .col {
 	margin-top: 10%;
 	margin-right: 20%;
 }
-
-#clear {
-	margin-left: 10%;
-}
-
 #lastSub {
 	width: 75%;
 	margin: 15% 12.5% 15% 12.5%;
@@ -141,13 +94,14 @@ form .col {
 #finish {
 	float: left;
 	margin-top: 4%;
-	width: 88%;
+	width: 100%;
 }
 
 /*sheet css*/
 ul {
+	list-style: none;
 	float: left;
-	width: 90%;
+	width: 100%;
 	padding: 1% 5%;
 }
 
@@ -156,4 +110,44 @@ ul p, ul input {
 	display: inline-block;
 	width: 15%;
 	margin-right: 3%;
+}
+.delete{
+	margin-right: -32px;
+}
+/*modern style*/
+input:not(#sld), input[type="text"], input[type="submit"],
+select, button, .label{
+	margin-top: 5px;
+	padding: 10px;
+	border: solid 5px #c9c9c9;
+	transition: border 0.3s;
+}
+ .checkWrapper{
+	border: solid 5px #c9c9c9;
+	padding: 7px;
+	transition: border 0.3s;
+	min-height: 30px;
+	height: 5%;
+	max-height: 50px;
+ }
+
+input[type="text"]:focus, input[type="submit"]:focus, select:focus, button:focus{
+	border: solid 5px #969696;
+	outline: none;
+}
+
+button:disabled{
+	opacity: .65;
+}
+form .row{
+	padding-left: 15px;
+	padding-right: 15px;
+}
+.row{
+	text-align: center;
+}
+
+#bg-desc{
+	padding-left: 6vw;
+	padding-right: 6vw;
 }

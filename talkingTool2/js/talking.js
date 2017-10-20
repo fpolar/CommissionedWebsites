@@ -46,9 +46,37 @@ document.onkeyup = function (event) {
         {
             clearCurrent(true);
         }
+        if (key === 79)
+        {
+        	$("#gender").val('other');
+        }
+        if (key === 77)
+        {
+        	$("#gender").val('male');
+        }
+        if (key === 70)
+        {
+        	$("#gender").val('female');
+        }
         if (key === 65)
         {
             clearCurrent(false);
+        }
+        if (key === 52)
+        {
+        	$("#animal").prop('checked', !($("#animal").prop('checked')));
+        }
+        if (key === 51)
+        {
+        	$("#noises").prop('checked', !($("#noises").prop('checked')));
+        }
+        if (key === 50)
+        {
+        	$("#humanSounds").prop('checked', !($("#humanSounds").prop('checked')));
+        }
+        if (key === 49)
+        {
+        	$("#music").prop('checked', !($("#music").prop('checked')));
         }
         if (key === 32)
         {
@@ -231,9 +259,9 @@ function clearCurrent(save)
             cGender = document.getElementById("gender").value;
         }
         insertCharToSheet(cName, cGender, cStart, cStop, cNoise);
-        document.getElementById("lastSub").innerHTML = "Submitted: " + cName + " talked from " + cStart + " to " + cStop + extras;
+//        document.getElementById("lastSub").innerHTML = "Submitted: " + cName + " talked from " + cStart + " to " + cStop + extras;
     } else {
-        document.getElementById("lastSub").innerHTML = "Cleared";
+//        document.getElementById("lastSub").innerHTML = "Cleared";
     }
     var s = document.getElementById("start_selector");
     var e = document.getElementById("end_selector");
@@ -272,7 +300,7 @@ function insertCharToSheet(name, gender, start, stop, noises) {
     noisesInput.value = noises;
     noisesInput.className = "noisesIn";
     var editButton = document.createElement("button");
-    editButton.innerHTML = "delete";
+    editButton.innerHTML = "x";//used to say delete
     editButton.className = "delete";
 
     char.appendChild(nameInput);

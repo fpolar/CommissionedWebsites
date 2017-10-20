@@ -3,8 +3,7 @@
 <title>Talking Tool</title>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" type="text/css"
-	href="./talking.css" />
+<link rel="stylesheet" type="text/css" href="./talking.css" />
 <link rel="stylesheet" type="text/css"
 	href="./bootstrap/bootstrap.min.css" />
 <script src="./js/jquery-3.1.1.min.js"></script>
@@ -14,8 +13,10 @@
 	<div class="row">
 		<div class="col col-sm-7" id="media">
 			<div id="URLPopup">
-				<div id="URLLabel">Insert Video URL</div>
-				<input id="videoURL">
+				<div id="URLLabel">
+					<b>Insert Video URL</b>
+				</div>
+				<input type="text" id="videoURL">
 				<button id="submitURL" style="" onclick="getVideo()">Submit
 					URL</button>
 			</div>
@@ -47,12 +48,14 @@
 		</div>
 		<div id="menu" class="col col-sm-5">
 			<div class="row" id="instructions">
-				<br> shortcuts: z = mark start; x = mark end; a = clear; s =
-				save; <br>
+				<br> <b>Keyboard Shortcuts</b><br> z = mark start; x =
+				mark end;<br> m = male speaker; f = female speaker; o = other
+				speaker;<br> 1 = BG Music; 2 = BG Human Sounds; 3 = BG Noise; 4
+				= BG Animal Noise;<br> a = clear; s = save; <br>
 			</div>
 			<div class="row">
 				<div class="col-xs-6">
-					<input id="name" placeholder="insert character name">
+					<input type="text" id="name" placeholder="character name">
 				</div>
 				<div class="col-xs-6">
 					<select id="gender">
@@ -77,25 +80,34 @@
 			<div class="row">
 				<form action="" style="text-align: center">
 					<div class="row">
-						<div class="col col-xs-6">
-							<div class="label label-default">music</div>
-							<input type="checkbox" name="music" id="music" value="music">
+						<div class="col col-xs-6" style="color: black; font-weight: 400">
+							<div class="checkWrapper">
+								<p>music</p>
+								<input type="checkbox" name="music" id="music" value="music">
+							</div>
 						</div>
-						<div class="col col-xs-6">
-							<div class="label label-default">Human Sounds</div>
-							<input type="checkbox" name="humanSounds" id="humanSounds"
-								value="humanSounds">
+						<div class="col col-xs-6" style="color: black; font-weight: 400">
+							<div class="checkWrapper">
+								<p>human sounds</p>
+								<input type="checkbox" name="humanSounds" id="humanSounds"
+									value="humanSounds">
+							</div>
 						</div>
 					</div>
 
 					<div class="row">
-						<div class="col col-xs-6">
-							<div class="label label-default">background noises</div>
-							<input type="checkbox" name="noises" id="noises" value="noises">
+						<div class="col col-xs-6" style="color: black; font-weight: 400">
+							<div class="checkWrapper">
+								<p>animal noises</p>
+								<input type="checkbox" name="animal" id="animal" value="animal">
+							</div>
 						</div>
-						<div class="col col-xs-6">
-							<div class="label label-default">animal noises</div>
-							<input type="checkbox" name="animal" id="animal" value="animal">
+						<div class="col col-xs-6" style="color: black; font-weight: 400">
+
+							<div class="checkWrapper">
+								<p>background noises</p>
+								<input type="checkbox" name="noises" id="noises" value="noises">
+							</div>
 						</div>
 					</div>
 				</form>

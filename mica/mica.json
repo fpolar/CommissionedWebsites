@@ -1,0 +1,95 @@
+{
+	"projects": [{
+		"title": "Automatic Content Analysis",
+		"description": "We are working on movies to automatically extract detailed information such as the gender of the person speaking and shown onscreen. The next feature we are working on is predicting raceIn the demo videos below, you'll see a few clips from recent movies, where we detect characters' faces, identify their gender (notice the color of the bounding box), and predict the gender of the person speaking",
+		"instructions": [],
+		"demos": [{
+			"type": "video",
+			"title": "Hidden Figures (2016)",
+			"link": "https://drive.google.com/file/d/0B3ydbkt5jAUyMEJTdTZIeHVuVTA/preview?autoplay=0"
+			},
+			{
+				"type": "video",
+				"title": "Spy (2015)",
+				"link": "https://drive.google.com/file/d/0B8132RAFdTk7SVZVUlYySkdIV1U/preview"
+				}]
+		},
+		{
+			"title": "Character Network Visualization",
+			"description": "Character Network Visualization ",
+			"instructions": [{"1":"Zoom in(alt+click) and rotate(shift+click) the graph to reveal interesting patterns"},
+				{"2":"Each node in the graph represents a character in the movie; hover on it to reveal its name"},
+				{"3":"Size of the node represents number of utterances by that character"},
+				{"4":"See the legend on the top-right corner for details on the nodes. Double click on the nodes in legend to isolate them in the graph"},
+				{"5":"The graph title indicates if a movie passes the Bechdel test"},
+				{"6":"Red nodes represent female characters that pass the Bechdel test"},
+				{"7":"If you use this in your work please cite the following paper"}],
+			"demos": [{
+				"type": "script_iframe",
+				"title": "Choose a movie here and click submit",
+				"iframe": "https://plot.ly/~USC.SAIL.lab/4.embed?show_link=false",
+				"script": "./projectscripts/char_vis_demo.js"
+				}]
+				}
+	],
+	"people": [{
+		"type": "Faculty",
+		"personList": [{
+			"name": "Shrikanth Narayanan",
+			"img": "",
+			"title": "Andrew J. Viterbi Professor of Engineering",
+			"school": "USC Electrical Engineering",
+			"contact": "213-740-6432"
+			}]
+		},
+		{
+		"type": "Collaborators",
+		"personList": [{
+			"name": "Tanaya Guha",
+			"img": "",
+			"title": "Assistant Professor",
+			"school": "Electrical Engineering & IIT Kanpur",
+			"contact": "tanayaguha@gmail.com"
+			},
+			{
+				"name": "Naveen Kumar",
+				"img": "",
+				"title": "",
+				"school": "",
+				"contact": "komanthnk@usc.edu"
+			}]
+		},
+		{
+		"type": "Doctoral Students",
+		"personList": [{
+			"name": "Krishna Somandepalli",
+			"img": "",
+			"title": "",
+			"school": "USC Electrical Engineering",
+			"contact": "somandep@usc.edu"
+			}]
+		},
+		{
+			"type": "Undergraduate Students",
+			"personList": [{
+				"name": "Frank Anthony Pol",
+				"img": "",
+				"title": "",
+				"school": "USC Computer Science",
+				"contact": "fpol@usc.edu"
+			}]
+			}
+	],
+
+	"aboutUs":"Welcome to the SAIL Media Informatics and Content Analysis (MICA) group.At the Signal Analysis and Interpretation Laboratory (SAIL), we conduct research on a wide variety of media related tasks which focus on human-centered applications. Our emphasis is on speech, video, music, text and multimodal information processing.MICA's research applications and systems development concentrate on domains with direct societal relevance ranging from automated movie content analysis, understanding gender roles to gathering informatics on human interactions from speech and body gestures.",
+	"slides":[{
+			"name": "Character Network Visualization",
+			"img": "http://sail.usc.edu/mica/imgs/demo_4.png",
+			"desc": "Our work involves independent and joint processing of audio, visual and text information, and developing computational models to quantify and predict emotion and other quantities related to the impact  of media to our personal and social life. Starting with structure databases like movies,we plan to extend our analysis to tv shows, youtube, social media, etc."
+			},
+			{
+				"name": "Automatic Content Analysis",
+			"img": "http://sail.usc.edu/mica/imgs/demo_3.gif",
+			"desc": "We are working on movies to automatically extract a variety of information. In the demo video, you'll see a clip from the movie Good Deeds, where we detect characters' faces, identify  their gender (notice the color of the bounding box), detect whether  they are speaking or not (a dot appears when a person speaks), and even recognize one speaker from another."
+			}]
+}
